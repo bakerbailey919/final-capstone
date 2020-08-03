@@ -1,12 +1,17 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+      <device-list /> 
   </div>
 </template>
 
 <script>
+import DeviceList from '../components/DeviceList.vue'
+
 export default {
-  name: "home"
+  name: "home",
+  components: {
+    DeviceList
+  }
 };
 </script>
