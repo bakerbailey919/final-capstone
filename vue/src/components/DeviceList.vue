@@ -3,7 +3,14 @@
   <h2>Device List</h2>
       <p v-for="device in devices"
           v-bind:key="device.id"
-          > {{device.id}}
+          > {{device.deviceID}} | 
+            {{device.deviceType}} |
+            {{device.deviceType}} |
+            {{device.deviceType}} |
+            {{device.deviceType}} |
+            {{device.deviceType}} |
+            {{device.deviceType}} |
+            
           </p>
 </div>
 </template>
