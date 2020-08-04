@@ -2,16 +2,16 @@
 <div>
   <h2>Device List</h2>
       <p v-for="device in devices"
-          v-bind:key="device.id"
-          
-          > {{device.deviceID}} | 
+          v-bind:key="device.id">
+          <device-card v-bind:device="device" />
+            <!--{{device.deviceID}} | 
             {{device.deviceType}} |
             {{device.firmwareVersion}} |
             {{device.facility}} |
             {{device.city}} |
             {{device.state}} |
             {{device.deviceInUse}} |
-            {{device.batteryStatus}}
+            {{device.batteryStatus}} -->
             
           </p>
 </div>
@@ -19,9 +19,13 @@
 
 <script>
 import DeviceService from '../services/DeviceService.js'
+import DeviceCard from '../components/DeviceCard.vue'
 
 export default {
-name: "device-list",
+  name: "device-list",
+  components : {
+    DeviceCard
+  },
   data() {
     return {
       devices: [],
