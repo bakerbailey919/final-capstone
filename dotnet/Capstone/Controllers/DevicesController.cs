@@ -28,13 +28,10 @@ namespace Capstone.Controllers
         [HttpGet]
         public List<Device> GetDevices()
         {
-            
             List<Device> devices = deviceDAO.GetDevices();
 
             return devices;
         }
-
-
-
+        
     }
 }
