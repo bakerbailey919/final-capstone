@@ -5,7 +5,8 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import store from "../store/index";
-import DeviceList from "../components/DeviceList.vue"
+import DeviceList from "../components/DeviceList.vue";
+import CheckInLog from "../components/CheckInLog.vue";
 
 Vue.use(Router);
 
@@ -58,6 +59,14 @@ const router = new Router({
       path: "/devices",
       name: "devices",
       component: DeviceList,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/machineCheckins",
+      name: "machineCheckins",
+      component: CheckInLog,
       meta: {
         requiresAuth: true,
       },
