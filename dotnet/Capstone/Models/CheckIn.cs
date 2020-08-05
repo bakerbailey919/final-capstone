@@ -7,7 +7,7 @@ namespace Capstone.Models
 {
     public class CheckIn
     {
-        public int AuditLogID { get; set; }
+        public int AuditLogId { get; set; }
         public string PropertyName { get; set; }
         public DateTime LastCheckInTimeUtc { get; set; }
         public string Serial { get; set; }

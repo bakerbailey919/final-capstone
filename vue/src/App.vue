@@ -7,7 +7,10 @@
       <router-link class="nav-item" v-bind:to="{ name: 'home' }">
         <i class="fas fa-home"></i> <!-- This is a font awesome icon -->
         Home 
-      </router-link>
+      </router-link>&nbsp;|&nbsp;
+      <router-link
+        class="nav-item"
+        v-bind:to="{name: 'machineCheckins'}">Check In Log</router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'register' }"

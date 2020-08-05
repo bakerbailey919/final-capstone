@@ -37,7 +37,7 @@ namespace Capstone.DAO
                         {
                             CheckIn chkin = new CheckIn()
                             {
-                                AuditLogID = Convert.ToInt32(reader["AuditLogID"]),
+                                AuditLogId = Convert.ToInt32(reader["AuditLogId"]),
                                 PropertyName = Convert.ToString(reader["PropertyName"]),
                                 LastCheckInTimeUtc = Convert.ToDateTime(reader["LastCheckInTimeUtc"]),
                                 Serial = Convert.ToString(reader["Serial"]),

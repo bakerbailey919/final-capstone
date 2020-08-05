@@ -74,7 +74,7 @@
                     <td> {{ checkIn.armCartLeft }} </td>
                     <td> {{ checkIn.armCartRight }} </td>
                     <td> {{ checkIn.pulleyDataLeftDistanceCCW }} </td>
-                    <td> {{ checkIn.plleyDataLeftDistanceCW }} </td>
+                    <td> {{ checkIn.pulleyDataLeftDistanceCW }} </td>
                     <td> {{ checkIn.pulleyDataRightDistanceCCW }} </td>
                     <td> {{ checkIn.pulleyDataRightDistanceCW }} </td>
                     <td> {{ checkIn.batteryLevel }} </td>
@@ -98,12 +98,13 @@ export default
     return {
       checkIns: [],
       filter: {
-        AuditLogId: "",
-        PropertyName: "",
-        LastCheckInTimeUtc: "",
-        Serial: "",
-        Name: "",
-        MachineModelId: ""
+        auditLogId: "",
+        propertyName: "",
+        lastCheckInTimeUtc: "",
+        serial: "",
+        name: "",
+        machineModelId: "",
+        batteryLevel: ""
       }
     };
   },
@@ -116,20 +117,20 @@ export default
           console.error(error);
       });
   },
-    computed:
+computed:
     {
         filteredList() 
         {
             let filteredCheckIns = this.checkIns;
+        
 
-            /* if (this.filter.auditLogId != "") 
+            if (this.filter.auditLogId != "") 
             {
                 filteredCheckIns = filteredCheckIns.filter((chkin) =>
-                chkin.auditLogId
-                    .toLowerCase()
-                    .includes(this.filter.auditLogId.toLowerCase())
+                (chkin.auditLogId == this.filter.auditLogId)
                 );
             }
+            
             if (this.filter.propertyName != "") 
             {
                 filteredCheckIns = filteredCheckIns.filter((chkin) =>
@@ -146,6 +147,7 @@ export default
                     .includes(this.filter.lastCheckInTimeUtc.toLowerCase())
                 );
             }
+            
             if (this.filter.serial != "") 
             {
                 filteredCheckIns = filteredCheckIns.filter((chkin) =>
@@ -163,6 +165,7 @@ export default
                 );
             }
             if (this.filter.machineModelId != "") 
+                
             {
                 filteredCheckIns = filteredCheckIns.filter((chkin) =>
                 chkin.machineModelId
@@ -170,15 +173,14 @@ export default
                     .includes(this.filter.machineModelId.toLowerCase())
                 );
             }
+
             if (this.filter.batteryLevel != "") 
             {
                 filteredCheckIns = filteredCheckIns.filter((chkin) =>
-                chkin.batteryLevel
-                    .toLowerCase()
-                    .includes(this.filter.batteryLevel.toLowerCase())
+                (chkin.batteryLevel <= this.filter.batteryLevel)
                 ); 
             }
-            */
+            
             return filteredCheckIns;
         }  
     }

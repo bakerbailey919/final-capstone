@@ -2,7 +2,7 @@
 <div>
   <h2>Device List</h2>
       <p v-for="device in devices"
-         v-bind:key="device.id">
+         v-bind:key="device.id" id="card-container">
             <device-card v-bind:device="device" />      
       </p>
 </div>
@@ -36,5 +36,7 @@ export default {
 </script>
 
 <style>
-
+#card-container{
+  display: inline-block;
+}
 </style>

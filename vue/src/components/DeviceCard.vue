@@ -38,6 +38,7 @@ export default {
     border: 2px solid black;
     border-radius: 10px;
     margin: 20px;
+    width: 400px;
     text-align: center;
 }
 </style>
