@@ -9,10 +9,10 @@ namespace Capstone.Models
     {
         public int AuditLogID { get; set; }
         public string PropertyName { get; set; }
-        public DateTime LastCheckInTime { get; set; }
+        public DateTime LastCheckInTimeUtc { get; set; }
         public string Serial { get; set; }
         public string Name { get; set; }
-        public int MachineModelID { get; set; }
+        public int MachineModelId { get; set; }
         public int ArmAssistLeft { get; set; }
         public int ArmAssistRight { get; set; }
         public int ArmCartLeft { get; set; }

@@ -35,43 +35,26 @@ namespace Capstone.DAO
                     {
                         while (reader.Read())
                         {
-                            CheckIn dev = new CheckIn()
+                            CheckIn chkin = new CheckIn()
                             {
-                               AuditLogID = Convert.To(reader[""]),
-                               PropertyName = Convert.ToString(reader["PropertyName"]),
-                               LastCheckInTimeUtc = Convert.ToString(reader["device_type"]),
-                               Serial = Convert.ToString(reader["firmware_version"]),
-                               Name = Convert.ToString(reader["facility"]),
-                               MachineModelId = Convert.ToString(reader["city"]),
-                               ArmAssistLeft = Convert.ToString(reader["state"]),
-                               ArmAssistRight = Convert.ToBoolean(reader["device_in_use"]),
-                               ArmCartLeft = Convert.ToDecimal(reader["battery_status"]),
-                               ArmCartRight = Convert.ToInt32(reader["device_id"]),
-                               PulleyDataLeftDistanceCCW = Convert.ToString(reader["device_type"]),
-                               PulleyDataLeftDistanceCW = Convert.ToString(reader["firmware_version"]),
-                               PulleyDataRightDistanceCCW = Convert.ToString(reader["facility"]),
-                               PulleyDataRightDistanceCW = Convert.ToString(reader["city"]),
-                               BatteryLevel = Convert.ToString(reader["state"]),
-                                
-
+                                AuditLogID = Convert.ToInt32(reader["AuditLogID"]),
+                                PropertyName = Convert.ToString(reader["PropertyName"]),
+                                LastCheckInTimeUtc = Convert.ToDateTime(reader["LastCheckInTimeUtc"]),
+                                Serial = Convert.ToString(reader["Serial"]),
+                                Name = Convert.ToString(reader["Name"]),
+                                MachineModelId = Convert.ToInt32(reader["MachineModelId"]),
+                                ArmAssistLeft = Convert.ToInt32(reader["ArmAssistLeft"]),
+                                ArmAssistRight = Convert.ToInt32(reader["ArmAssistRight"]),
+                                ArmCartLeft = Convert.ToInt32(reader["ArmCartLeft"]),
+                                ArmCartRight = Convert.ToInt32(reader["ArmCartRight"]),
+                                PulleyDataLeftDistanceCCW = Convert.ToDecimal(reader["PulleyDataLeftDistanceCCW"]),
+                                PulleyDataLeftDistanceCW = Convert.ToDecimal(reader["PulleyDataLeftDistanceCW"]),
+                                PulleyDataRightDistanceCCW = Convert.ToDecimal(reader["PulleyDataRightDistanceCCW"]),
+                                PulleyDataRightDistanceCW = Convert.ToDecimal(reader["PulleyDataRightDistanceCW"]),
+                                BatteryLevel = Convert.ToDecimal(reader["BatteryLevel"])
                             };
-                            public int AuditLogID { get; set; }
-        public string PropertyName { get; set; }
-        public DateTime LastCheckInTime { get; set; }
-        public string Serial { get; set; }
-        public string Name { get; set; }
-        public int MachineModelID { get; set; }
-        public int ArmAssistLeft { get; set; }
-        public int ArmAssistRight { get; set; }
-        public int ArmCartLeft { get; set; }
-        public int ArmCartRight { get; set; }
-        public decimal PulleyDataLeftDistanceCCW { get; set; }
-        public decimal PulleyDataLeftDistanceCW { get; set; }
-        public decimal PulleyDataRightDistanceCCW { get; set; }
-        public decimal PulleyDataRightDistanceCW { get; set; }
-        public decimal BatteryLevel { get; set; }
-
-        devices.Add(dev);
+                            
+                                checkIns.Add(chkin);
                         }
                     }
                 }
@@ -81,7 +64,7 @@ namespace Capstone.DAO
                 throw;
             }
 
-            return devices;
+            return checkIns;
         }
     }
 }

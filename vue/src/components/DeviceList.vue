@@ -2,18 +2,9 @@
 <div>
   <h2>Device List</h2>
       <p v-for="device in devices"
-          v-bind:key="device.id">
-          <device-card v-bind:device="device" />
-            <!--{{device.deviceID}} | 
-            {{device.deviceType}} |
-            {{device.firmwareVersion}} |
-            {{device.facility}} |
-            {{device.city}} |
-            {{device.state}} |
-            {{device.deviceInUse}} |
-            {{device.batteryStatus}} -->
-            
-          </p>
+         v-bind:key="device.id">
+            <device-card v-bind:device="device" />      
+      </p>
 </div>
 </template>
 

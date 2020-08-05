@@ -10,23 +10,22 @@ using Capstone.DAO;
 
 namespace Capstone.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
-    public class MachineCheckInsController : ControllerBase
+    public class MachineController : ControllerBase
     {
-        private IDeviceDAO deviceDAO;
+        private IMachineDAO machineDAO;
         
-        public MachineCheckInsController(IDeviceDAO _deviceDAO)
+        public MachineController(IMachineDAO _machineDAO)
         {
-            deviceDAO = _deviceDAO;
+            machineDAO = _machineDAO;
         }
-
-
+        
         [Authorize]
         [HttpGet]
         public List<CheckIn> GetMachineCheckins()
         {
-            List<Device> checkins = deviceDAO.GetMachineCheckins();
+            List<CheckIn> checkins = machineDAO.GetMachineCheckIns();
 
             return checkins;
         }
