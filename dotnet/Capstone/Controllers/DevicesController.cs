@@ -16,14 +16,12 @@ namespace Capstone.Controllers
     public class DevicesController : ControllerBase
     {
         private IDeviceDAO deviceDAO;
-
         
         public DevicesController(IDeviceDAO _deviceDAO)
         {
             deviceDAO = _deviceDAO;
         }
         
-
         [Authorize]
         [HttpGet]
         public List<Device> GetDevices()

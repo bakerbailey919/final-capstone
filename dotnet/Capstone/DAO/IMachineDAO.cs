@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.DAO
 {
-    interface Interface
+    interface IMachineDAO
     {
     }
 }
