@@ -25,6 +25,7 @@ namespace Capstone.Controllers
         [HttpGet]
         public List<CheckIn> GetMachineAlerts()
         {
+
             return null;
         }
     }

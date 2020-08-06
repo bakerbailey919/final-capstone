@@ -22,5 +22,7 @@ namespace Capstone.Models
         public decimal PulleyDataRightDistanceCCW { get; set; }
         public decimal PulleyDataRightDistanceCW { get; set; }
         public decimal BatteryLevel { get; set; }
+        public bool BatteryIssues { get; set; }
+        public bool InUse { get; set; }
     }
 }
