@@ -1,9 +1,7 @@
 <template>
   <div class="card">
-        <h2> Device ID: {{device.deviceID}} </h2> 
-        <h2> Device Type: {{device.deviceType}} </h2> 
-        <h2> Device In Use: {{device.deviceInUse}} </h2> 
-        <h2> Battery Percentage: {{device.batteryStatus}}% </h2> 
+        <h3> Device Name: {{device.name}} </h3> 
+        <h3> Serial: {{device.serial}} </h3> 
   </div>
 </template>
 
@@ -18,9 +16,11 @@ export default {
     data() {
     return {
       devices: [],
+      alerts: []
     };
   },
   created() {
+
       DeviceService.getDevices()
       .then( (response) => {
           this.devices = response.data
@@ -29,6 +29,13 @@ export default {
           console.error(error);
       });
 
+      DeviceService.getAlerts()
+      .then ( (response) => {
+          this.alerts = response.data
+      })
+      .catch( (error) => {
+          console.error(error);
+      });
   }
 }
 </script>
@@ -38,7 +45,8 @@ export default {
     border: 2px solid black;
     border-radius: 10px;
     margin: 20px;
-    width: 400px;
+    width: 800px;
     text-align: center;
+    background-color: lightgreen;
 }
 </style>

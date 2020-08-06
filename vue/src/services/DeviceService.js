@@ -6,6 +6,9 @@ export default {
     },
     getMachineCheckIns() {
         return axios.get('/machine');
+    },
+    getAlerts(){
+        return axios.get('alerts')
     }
     //getTopicID(id) {
     //    return http.get('/topics/' + id)

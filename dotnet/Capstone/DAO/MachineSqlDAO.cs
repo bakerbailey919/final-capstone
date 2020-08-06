@@ -55,6 +55,7 @@ namespace Capstone.DAO
                             };
                             
                                 checkIns.Add(chkin);
+                            
                         }
                     }
                 }

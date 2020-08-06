@@ -11,7 +11,7 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private string sqlGetDevices = "SELECT * FROM devices";
+        private string sqlGetDevices = "SELECT Serial, name FROM MachineCheckIns GROUP BY Serial, name;";
 
         public DeviceSqlDAO(string dbConnectionString)
         {
@@ -37,15 +37,8 @@ namespace Capstone.DAO
                         {
                             Device dev = new Device()
                             {
-                                DeviceID = Convert.ToInt32(reader["device_id"]),
-                                DeviceType = Convert.ToString(reader["device_type"]),
-                                FirmwareVersion = Convert.ToString(reader["firmware_version"]),
-                                Facility = Convert.ToString(reader["facility"]),
-                                City = Convert.ToString(reader["city"]),
-                                State = Convert.ToString(reader["state"]),
-                                DeviceInUse = Convert.ToBoolean(reader["device_in_use"]),
-                                BatteryStatus = Convert.ToDecimal(reader["battery_status"])
-
+                                Serial = Convert.ToString(reader["Serial"]),
+                                Name = Convert.ToString(reader["Name"])
                             };
 
                             devices.Add(dev);

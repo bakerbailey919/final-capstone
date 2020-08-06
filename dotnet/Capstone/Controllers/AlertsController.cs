@@ -25,8 +25,9 @@ namespace Capstone.Controllers
         [HttpGet]
         public List<CheckIn> GetMachineAlerts()
         {
+            List<CheckIn> machinesAlerting = alertDAO.GetMachineData();
 
-            return null;
+            return machinesAlerting;
         }
     }
 }

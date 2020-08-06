@@ -10,7 +10,7 @@
       </router-link>&nbsp;|&nbsp;
       <router-link
         class="nav-item"
-        v-bind:to="{name: 'machineCheckins'}">Check In Log</router-link>
+        v-bind:to="{name: 'machineCheckins'}">Check-In Log</router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'register' }"
