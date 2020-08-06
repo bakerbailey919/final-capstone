@@ -1,11 +1,14 @@
 <template>
-  <div class="card">
+  <div v-bind:class = "((device.serial == alerts.serial) && (alerts.batteryIssues))?'batteryLow':'card'"> 
+      <!--class="card" v-bind:class="{ 'batteryLow' : ( (device.serial === alerts.serial) && (alerts.batteryIssues) ) }"> -->
         <h3> Device Name: {{device.name}} </h3> 
         <h3> Serial: {{device.serial}} </h3> 
   </div>
 </template>
 
+
 <script>
+//(device.serial == alerts.serial) && (alerts.batteryIssues)
 import DeviceService from '../services/DeviceService.js'
 
 export default {
@@ -17,6 +20,7 @@ export default {
     return {
       devices: [],
       alerts: []
+
     };
   },
   created() {
@@ -48,5 +52,13 @@ export default {
     width: 800px;
     text-align: center;
     background-color: lightgreen;
+}
+.batteryLow {
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    width: 800px;
+    text-align: center;
+    background-color: rgb(250, 66, 66);
 }
 </style>

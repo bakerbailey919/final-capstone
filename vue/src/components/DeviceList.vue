@@ -20,12 +20,21 @@ export default {
   data() {
     return {
       devices: [],
+      alerts: []
     };
   },
   created() {
       DeviceService.getDevices()
       .then( (response) => {
           this.devices = response.data
+      })
+      .catch( (error) => {
+          console.error(error);
+      });
+
+      DeviceService.getAlerts()
+      .then ( (response) => {
+          this.alerts = response.data
       })
       .catch( (error) => {
           console.error(error);
