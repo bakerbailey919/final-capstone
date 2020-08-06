@@ -9,5 +9,7 @@ namespace Capstone.Models
     {
         public string Serial { get; set; }
         public string Name { get; set; }
+        public bool BatteryLow { get; set; }
+        public bool InUse { get; set; }
     }
 }

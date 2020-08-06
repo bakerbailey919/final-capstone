@@ -14,20 +14,20 @@ namespace Capstone.Controllers
     [ApiController]
     public class AlertsController : ControllerBase
     {
-        private IAlertDAO alertDAO;
+        //private IAlertDAO alertDAO;
 
-        public AlertsController(IAlertDAO _alertDAO)
-        {
-            alertDAO = _alertDAO;
-        }
+        //public AlertsController(IAlertDAO _alertDAO)
+        //{
+        //    alertDAO = _alertDAO;
+        //}
 
-        [Authorize]
-        [HttpGet]
-        public List<CheckIn> GetMachineAlerts()
-        {
-            List<CheckIn> machinesAlerting = alertDAO.GetMachineData();
+        //[Authorize]
+        //[HttpGet]
+        //public List<CheckIn> GetMachineAlerts()
+        //{
+        //    List<CheckIn> machinesAlerting = alertDAO.GetMachineData();
 
-            return machinesAlerting;
-        }
+        //    return machinesAlerting;
+        //}
     }
 }

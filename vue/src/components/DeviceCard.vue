@@ -1,6 +1,5 @@
 <template>
-  <div v-bind:class = "((device.serial == alerts.serial) && (alerts.batteryIssues))?'batteryLow':'card'"> 
-      <!--class="card" v-bind:class="{ 'batteryLow' : ( (device.serial === alerts.serial) && (alerts.batteryIssues) ) }"> -->
+  <div class="card" v-bind:class="{ 'batteryLow' : (device.batteryLow)  }">
         <h3> Device Name: {{device.name}} </h3> 
         <h3> Serial: {{device.serial}} </h3> 
   </div>
@@ -9,6 +8,7 @@
 
 <script>
 //(device.serial == alerts.serial) && (alerts.batteryIssues)
+//v-bind:class = "((device.serial == alerts.serial) && (alerts.batteryIssues))?'batteryLow':'card'">
 import DeviceService from '../services/DeviceService.js'
 
 export default {
@@ -19,7 +19,7 @@ export default {
     data() {
     return {
       devices: [],
-      alerts: []
+      //alerts: []
 
     };
   },
@@ -33,13 +33,14 @@ export default {
           console.error(error);
       });
 
-      DeviceService.getAlerts()
+      /*DeviceService.getAlerts()
       .then ( (response) => {
           this.alerts = response.data
       })
       .catch( (error) => {
           console.error(error);
       });
+      */
   }
 }
 </script>

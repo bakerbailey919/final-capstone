@@ -24,11 +24,11 @@ namespace Capstone.Controllers
         
         [Authorize]
         [HttpGet]
-        public List<Device> GetDevices()
+        public List<Device> GetAllDevicesAndRelavantAlerts()
         {
-            List<Device> devices = deviceDAO.GetDevices();
+            List<Device> allDeviceWithRelavantAlerts = deviceDAO.GetAllDevicesAndRelavantAlerts();
 
-            return devices;
+            return allDeviceWithRelavantAlerts;
         }
         
     }
