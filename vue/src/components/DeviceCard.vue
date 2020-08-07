@@ -1,6 +1,11 @@
 <template>
   <div class="card" v-bind:class="{ 'batteryLow' : (device.batteryLow), 'sensor' : (device.machineModelId == 2) }">
-        <h3  v-if="device.inUse"><div class="circle"></div></h3> 
+        <h3  v-if="device.inUse">
+            <div class="circle"></div>
+        </h3> 
+        <h3 v-else>
+            <div class="redCircle"></div>
+        </h3>
         <h3> Device Name: {{device.name}} </h3>
         <h3> Serial: {{device.serial}} </h3>
         <h3> Battery: {{device.batteryLevel}}% </h3> 
@@ -68,7 +73,15 @@ export default {
     height: 20px;
     width: 20px;
     border-radius: 10px;
-    background-color: green;
+    background-color:green;
+    margin-top: 8px;
+    margin-left: 450px;
+}
+.redCircle {
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background-color: darkgray;
     margin-top: 8px;
     margin-left: 450px;
 }

@@ -153,7 +153,7 @@ namespace Capstone.DAO
             //write loops that check our last two updates for issues
             for (int i = 0; i < recentCheckIns.Count; i++)
             {
-                if (recentCheckIns[i].BatteryLevel < 94.9M)
+                if (recentCheckIns[i].BatteryLevel < 25.00M)
                 {
                     recentCheckIns[i].BatteryLow = true;
                     machinesAlerting.Add(recentCheckIns[i]);
