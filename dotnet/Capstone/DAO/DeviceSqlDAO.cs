@@ -12,7 +12,7 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private string sqlGetDevices = "SELECT Serial, name FROM MachineCheckIns GROUP BY Serial, name;";
+        //private string sqlGetDevices = "SELECT Serial, name FROM MachineCheckIns GROUP BY Serial, name;";
 
         private string sqlGetOrderedMachineCheckIns = "SELECT * FROM MachineCheckIns ORDER BY Serial, LastCheckInTimeUtc";
 
@@ -144,6 +144,11 @@ namespace Capstone.DAO
                     recentCheckIns.Add(orderedCheckIns[i - 1]);
                     secondMostRecentCheckIns.Add(orderedCheckIns[i - 2]);
                 }
+                if (i == orderedCheckIns.Count - 1)
+                {
+                    recentCheckIns.Add(orderedCheckIns[orderedCheckIns.Count - 1]);
+                    secondMostRecentCheckIns.Add(orderedCheckIns[i - 2]);
+                }
             }
             //write loops that check our last two updates for issues
             for (int i = 0; i < recentCheckIns.Count; i++)
@@ -185,8 +190,7 @@ namespace Capstone.DAO
                     {
                         allDevices[i].BatteryLow = checkInAlerts[j].BatteryLow;
                         allDevices[i].InUse = checkInAlerts[j].InUse;
-
-
+                        
                     }
                 }
             }

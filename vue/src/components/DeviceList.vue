@@ -32,13 +32,14 @@ export default {
           console.error(error);
       });
 
-      DeviceService.getAlerts()
+      /*DeviceService.getAlerts()
       .then ( (response) => {
           this.alerts = response.data
       })
       .catch( (error) => {
           console.error(error);
       });
+      */
 
   }
 }
