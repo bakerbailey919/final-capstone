@@ -83,7 +83,7 @@ namespace Capstone.DAO
             {
                 if (recentCheckIns[i].BatteryLevel < 94.9M)
                 {
-                    recentCheckIns[i].BatteryIssues = true;
+                    recentCheckIns[i].BatteryLow = true;
                     machinesAlerting.Add(recentCheckIns[i]);
                 }
                 if (recentCheckIns[i].ArmAssistLeft != secondMostRecentCheckIns[i].ArmAssistLeft || 

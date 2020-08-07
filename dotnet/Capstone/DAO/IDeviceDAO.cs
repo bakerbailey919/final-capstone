@@ -10,10 +10,10 @@ namespace Capstone.DAO
 {
     public interface IDeviceDAO
     {
-        List<Device> GetDevices();
+        List<CheckIn> GetDevices();
 
         List<CheckIn> GetMachineData();
 
-        List<Device> GetAllDevicesAndRelavantAlerts();
+        List<CheckIn> GetAllDevicesAndRelavantAlerts();
     }
 }

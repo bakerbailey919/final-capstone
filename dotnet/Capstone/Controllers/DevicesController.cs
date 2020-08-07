@@ -24,9 +24,9 @@ namespace Capstone.Controllers
         
         [Authorize]
         [HttpGet]
-        public List<Device> GetAllDevicesAndRelavantAlerts()
+        public List<CheckIn> GetAllDevicesAndRelavantAlerts()
         {
-            List<Device> allDeviceWithRelavantAlerts = deviceDAO.GetAllDevicesAndRelavantAlerts();
+            List<CheckIn> allDeviceWithRelavantAlerts = deviceDAO.GetAllDevicesAndRelavantAlerts();
 
             return allDeviceWithRelavantAlerts;
         }

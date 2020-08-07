@@ -22,9 +22,9 @@ namespace Capstone.DAO
 
         }
 
-        public List<Device> GetDevices()
+        public List<CheckIn> GetDevices()
         {
-            List<Device> allDevices = new List<Device>();
+            List<CheckIn> orderedCheckIns = new List<CheckIn>();
 
             try
             {
@@ -32,20 +32,33 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand(sqlGetDevices, conn);
+                    SqlCommand cmd = new SqlCommand(sqlGetOrderedMachineCheckIns, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
-                            Device dev = new Device()
+                            CheckIn checkIn = new CheckIn()
                             {
+                                AuditLogId = Convert.ToInt32(reader["AuditLogId"]),
+                                PropertyName = Convert.ToString(reader["PropertyName"]),
+                                LastCheckInTimeUtc = Convert.ToDateTime(reader["LastCheckInTimeUtc"]),
                                 Serial = Convert.ToString(reader["Serial"]),
-                                Name = Convert.ToString(reader["Name"])
+                                Name = Convert.ToString(reader["Name"]),
+                                MachineModelId = Convert.ToInt32(reader["MachineModelId"]),
+                                ArmAssistLeft = Convert.ToInt32(reader["ArmAssistLeft"]),
+                                ArmAssistRight = Convert.ToInt32(reader["ArmAssistRight"]),
+                                ArmCartLeft = Convert.ToInt32(reader["ArmCartLeft"]),
+                                ArmCartRight = Convert.ToInt32(reader["ArmCartRight"]),
+                                PulleyDataLeftDistanceCCW = Convert.ToDecimal(reader["PulleyDataLeftDistanceCCW"]),
+                                PulleyDataLeftDistanceCW = Convert.ToDecimal(reader["PulleyDataLeftDistanceCW"]),
+                                PulleyDataRightDistanceCCW = Convert.ToDecimal(reader["PulleyDataRightDistanceCCW"]),
+                                PulleyDataRightDistanceCW = Convert.ToDecimal(reader["PulleyDataRightDistanceCW"]),
+                                BatteryLevel = Convert.ToDecimal(reader["BatteryLevel"])
                             };
 
-                                allDevices.Add(dev);
+                                orderedCheckIns.Add(checkIn);
                         }
                     }
                 }
@@ -55,16 +68,31 @@ namespace Capstone.DAO
                 throw;
             }
 
-            return allDevices;
+            List<CheckIn> recentCheckIns = new List<CheckIn>();
+
+            //breaksdown our total list to contain the recent updates from each machine
+            for (int i = 2; i < orderedCheckIns.Count; i++)
+            {
+                if (orderedCheckIns[i].Serial != orderedCheckIns[i - 1].Serial)
+                {
+                    recentCheckIns.Add(orderedCheckIns[i - 1]);
+                }
+                if(i == orderedCheckIns.Count - 1)
+                {
+                    recentCheckIns.Add(orderedCheckIns[orderedCheckIns.Count - 1]);
+                }
+            }
+
+            return recentCheckIns;
         }
 
         public List<CheckIn> GetMachineData()
         {
-            List<CheckIn> checkIns = new List<CheckIn>();
+            List<CheckIn> orderedCheckIns = new List<CheckIn>();
             List<CheckIn> recentCheckIns = new List<CheckIn>();
             List<CheckIn> secondMostRecentCheckIns = new List<CheckIn>();
             List<CheckIn> machinesAlerting = new List<CheckIn>();
-            
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -98,7 +126,7 @@ namespace Capstone.DAO
 
                             };
 
-                            checkIns.Add(checkIn);
+                            orderedCheckIns.Add(checkIn);
                         }
                     }
                 }
@@ -109,12 +137,12 @@ namespace Capstone.DAO
             }
 
             //breaksdown our total list to contain the recent updates from each machine
-            for (int i = 2; i < checkIns.Count; i++)
+            for (int i = 2; i < orderedCheckIns.Count; i++)
             {
-                if (checkIns[i].Name != checkIns[i - 1].Name)
+                if (orderedCheckIns[i].Serial != orderedCheckIns[i - 1].Serial)
                 {
-                    recentCheckIns.Add(checkIns[i - 1]);
-                    secondMostRecentCheckIns.Add(checkIns[i - 2]);
+                    recentCheckIns.Add(orderedCheckIns[i - 1]);
+                    secondMostRecentCheckIns.Add(orderedCheckIns[i - 2]);
                 }
             }
             //write loops that check our last two updates for issues
@@ -122,7 +150,7 @@ namespace Capstone.DAO
             {
                 if (recentCheckIns[i].BatteryLevel < 94.9M)
                 {
-                    recentCheckIns[i].BatteryIssues = true;
+                    recentCheckIns[i].BatteryLow = true;
                     machinesAlerting.Add(recentCheckIns[i]);
                 }
                 if (recentCheckIns[i].ArmAssistLeft != secondMostRecentCheckIns[i].ArmAssistLeft ||
@@ -142,12 +170,12 @@ namespace Capstone.DAO
             return machinesAlerting;
         }
 
-        public List<Device> GetAllDevicesAndRelavantAlerts()
+        public List<CheckIn> GetAllDevicesAndRelavantAlerts()
         {
-            List<Device> allDevices = GetDevices();
+            List<CheckIn> allDevices = GetDevices();
 
             List<CheckIn> checkInAlerts = GetMachineData();
-            
+
 
             for (int i = 0; i < allDevices.Count; i++)
             {
@@ -155,15 +183,16 @@ namespace Capstone.DAO
                 {
                     if (allDevices[i].Serial == checkInAlerts[j].Serial)
                     {
-                        allDevices[i].BatteryLow = checkInAlerts[j].BatteryIssues;
+                        allDevices[i].BatteryLow = checkInAlerts[j].BatteryLow;
                         allDevices[i].InUse = checkInAlerts[j].InUse;
+
 
                     }
                 }
             }
 
             return allDevices;
-            
+
         }
     }
 
