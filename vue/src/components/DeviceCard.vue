@@ -4,7 +4,7 @@
             <div class="circle"></div>
         </h3> 
         <h3 v-else>
-            <div class="redCircle"></div>
+            <div class="grayCircle"></div>
         </h3>
         <h3> Device Name: {{device.name}} </h3>
         <h3> Serial: {{device.serial}} </h3>
@@ -77,7 +77,7 @@ export default {
     margin-top: 8px;
     margin-left: 450px;
 }
-.redCircle {
+.grayCircle {
     height: 20px;
     width: 20px;
     border-radius: 10px;
