@@ -24,5 +24,6 @@ namespace Capstone.Models
         public decimal BatteryLevel { get; set; }
         public bool BatteryLow { get; set; }
         public bool InUse { get; set; }
+        public bool ConnectionLost { get; set; }
     }
 }

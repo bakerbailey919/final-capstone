@@ -153,6 +153,7 @@ namespace Capstone.DAO
             //write loops that check our last two updates for issues
             for (int i = 0; i < recentCheckIns.Count; i++)
             {
+                TimeSpan diff = DateTime.Now - recentCheckIns[i].LastCheckInTimeUtc;
                 if (recentCheckIns[i].BatteryLevel < 25.00M)
                 {
                     recentCheckIns[i].BatteryLow = true;
@@ -168,6 +169,11 @@ namespace Capstone.DAO
                     recentCheckIns[i].PulleyDataRightDistanceCW != secondMostRecentCheckIns[i].PulleyDataRightDistanceCW)
                 {
                     recentCheckIns[i].InUse = true;
+                }
+
+                if (diff.TotalMinutes >= 28)
+                {
+                    recentCheckIns[i].ConnectionLost = true;
                     machinesAlerting.Add(recentCheckIns[i]);
                 }
             }
@@ -190,7 +196,7 @@ namespace Capstone.DAO
                     {
                         allDevices[i].BatteryLow = checkInAlerts[j].BatteryLow;
                         allDevices[i].InUse = checkInAlerts[j].InUse;
-                        
+                        allDevices[i].ConnectionLost = checkInAlerts[j].ConnectionLost;    
                     }
                 }
             }
