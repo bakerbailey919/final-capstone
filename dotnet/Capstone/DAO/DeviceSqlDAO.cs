@@ -51,10 +51,8 @@ namespace Capstone.DAO
                                 ArmAssistRight = Convert.ToInt32(reader["ArmAssistRight"]),
                                 ArmCartLeft = Convert.ToInt32(reader["ArmCartLeft"]),
                                 ArmCartRight = Convert.ToInt32(reader["ArmCartRight"]),
-                                PulleyDataLeftDistanceCCW = Convert.ToDecimal(reader["PulleyDataLeftDistanceCCW"]),
-                                PulleyDataLeftDistanceCW = Convert.ToDecimal(reader["PulleyDataLeftDistanceCW"]),
-                                PulleyDataRightDistanceCCW = Convert.ToDecimal(reader["PulleyDataRightDistanceCCW"]),
-                                PulleyDataRightDistanceCW = Convert.ToDecimal(reader["PulleyDataRightDistanceCW"]),
+                                TotalPulleyDataLeftDistance = Convert.ToDecimal(reader["Total_PulleyDataLeftDistance"]),
+                                TotalPulleyDataRightDistance = Convert.ToDecimal(reader["Total_PulleyDataRightDistance"]),
                                 BatteryLevel = Convert.ToDecimal(reader["BatteryLevel"])
                             };
 
@@ -86,12 +84,13 @@ namespace Capstone.DAO
             return recentCheckIns;
         }
 
-        public List<CheckIn> GetMachineData()
-        {
             List<CheckIn> orderedCheckIns = new List<CheckIn>();
             List<CheckIn> recentCheckIns = new List<CheckIn>();
             List<CheckIn> secondMostRecentCheckIns = new List<CheckIn>();
             List<CheckIn> machinesAlerting = new List<CheckIn>();
+
+        public List<CheckIn> GetMachineData()
+        {
 
             try
             {
@@ -118,10 +117,8 @@ namespace Capstone.DAO
                                 ArmAssistRight = Convert.ToInt32(reader["ArmAssistRight"]),
                                 ArmCartLeft = Convert.ToInt32(reader["ArmCartLeft"]),
                                 ArmCartRight = Convert.ToInt32(reader["ArmCartRight"]),
-                                PulleyDataLeftDistanceCCW = Convert.ToDecimal(reader["PulleyDataLeftDistanceCCW"]),
-                                PulleyDataLeftDistanceCW = Convert.ToDecimal(reader["PulleyDataLeftDistanceCW"]),
-                                PulleyDataRightDistanceCCW = Convert.ToDecimal(reader["PulleyDataRightDistanceCCW"]),
-                                PulleyDataRightDistanceCW = Convert.ToDecimal(reader["PulleyDataRightDistanceCW"]),
+                                TotalPulleyDataLeftDistance = Convert.ToDecimal(reader["Total_PulleyDataLeftDistance"]),
+                                TotalPulleyDataRightDistance = Convert.ToDecimal(reader["Total_PulleyDataRightDistance"]),
                                 BatteryLevel = Convert.ToDecimal(reader["BatteryLevel"])
 
                             };
@@ -153,24 +150,24 @@ namespace Capstone.DAO
             //write loops that check our last two updates for issues
             for (int i = 0; i < recentCheckIns.Count; i++)
             {
-                TimeSpan diff = DateTime.Now - recentCheckIns[i].LastCheckInTimeUtc;
                 if (recentCheckIns[i].BatteryLevel < 25.00M)
                 {
                     recentCheckIns[i].BatteryLow = true;
                     machinesAlerting.Add(recentCheckIns[i]);
                 }
+
                 if (recentCheckIns[i].ArmAssistLeft != secondMostRecentCheckIns[i].ArmAssistLeft ||
                     recentCheckIns[i].ArmAssistRight != secondMostRecentCheckIns[i].ArmAssistRight ||
                     recentCheckIns[i].ArmCartLeft != secondMostRecentCheckIns[i].ArmCartLeft ||
                     recentCheckIns[i].ArmCartRight != secondMostRecentCheckIns[i].ArmCartRight ||
-                    recentCheckIns[i].PulleyDataLeftDistanceCCW != secondMostRecentCheckIns[i].PulleyDataLeftDistanceCCW ||
-                    recentCheckIns[i].PulleyDataLeftDistanceCW != secondMostRecentCheckIns[i].PulleyDataLeftDistanceCW ||
-                    recentCheckIns[i].PulleyDataRightDistanceCCW != secondMostRecentCheckIns[i].PulleyDataRightDistanceCCW ||
-                    recentCheckIns[i].PulleyDataRightDistanceCW != secondMostRecentCheckIns[i].PulleyDataRightDistanceCW)
+                    recentCheckIns[i].TotalPulleyDataLeftDistance != secondMostRecentCheckIns[i].TotalPulleyDataLeftDistance ||
+                    recentCheckIns[i].TotalPulleyDataRightDistance != secondMostRecentCheckIns[i].TotalPulleyDataRightDistance
+                    )
                 {
                     recentCheckIns[i].InUse = true;
                 }
 
+                TimeSpan diff = DateTime.Now - recentCheckIns[i].LastCheckInTimeUtc;
                 if (diff.TotalMinutes >= 28)
                 {
                     recentCheckIns[i].ConnectionLost = true;
@@ -203,6 +200,46 @@ namespace Capstone.DAO
 
             return allDevices;
 
+        }
+
+
+        private string sqlUpdateMaintenaceData = "UPDATE dbo.DeviceData SET LastMaintenanceDateTime = CURRENT_TIMESTAMP, Time_of_Maintenance_PulleyDataLeftDistance = @leftPulleyDistance, Time_of_Maintenance_PulleyDataRightDistance = @rightPulleyDistance WHERE Serial = @serialToUpdate;";
+
+        public void UpdateMaintenanceData(string inputSerial)
+        {
+            decimal leftPulleyDistance = 5;
+            decimal rightPulleyDistance = 0M;
+
+            for (int i=0; i < recentCheckIns.Count; i++)
+            {
+                if (inputSerial == recentCheckIns[i].Serial)
+                {
+                    leftPulleyDistance = recentCheckIns[i].TotalPulleyDataLeftDistance;
+                    rightPulleyDistance = recentCheckIns[i].TotalPulleyDataRightDistance;
+                }
+            }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(sqlUpdateMaintenaceData, conn);
+                    cmd.Parameters.AddWithValue("@leftPulleyDistance", leftPulleyDistance);
+                    cmd.Parameters.AddWithValue("@rightPulleyDistance", rightPulleyDistance);
+                    cmd.Parameters.AddWithValue("@serialToUpdate", inputSerial);
+                    
+                    int count = cmd.ExecuteNonQuery();
+                    
+
+                }
+            }
+            catch (Exception e)
+            {
+            }
+
+            ;
         }
     }
 

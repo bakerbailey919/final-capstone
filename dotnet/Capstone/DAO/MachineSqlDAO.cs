@@ -47,10 +47,8 @@ namespace Capstone.DAO
                                 ArmAssistRight = Convert.ToInt32(reader["ArmAssistRight"]),
                                 ArmCartLeft = Convert.ToInt32(reader["ArmCartLeft"]),
                                 ArmCartRight = Convert.ToInt32(reader["ArmCartRight"]),
-                                PulleyDataLeftDistanceCCW = Convert.ToDecimal(reader["PulleyDataLeftDistanceCCW"]),
-                                PulleyDataLeftDistanceCW = Convert.ToDecimal(reader["PulleyDataLeftDistanceCW"]),
-                                PulleyDataRightDistanceCCW = Convert.ToDecimal(reader["PulleyDataRightDistanceCCW"]),
-                                PulleyDataRightDistanceCW = Convert.ToDecimal(reader["PulleyDataRightDistanceCW"]),
+                                TotalPulleyDataLeftDistance = Convert.ToDecimal(reader["Total_PulleyDataLeftDistance"]),
+                                TotalPulleyDataRightDistance = Convert.ToDecimal(reader["Total_PulleyDataRightDistance"]),
                                 BatteryLevel = Convert.ToDecimal(reader["BatteryLevel"])
                             };
                             

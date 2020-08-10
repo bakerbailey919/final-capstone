@@ -17,10 +17,8 @@ namespace Capstone.Models
         public int ArmAssistRight { get; set; }
         public int ArmCartLeft { get; set; }
         public int ArmCartRight { get; set; }
-        public decimal PulleyDataLeftDistanceCCW { get; set; }
-        public decimal PulleyDataLeftDistanceCW { get; set; }
-        public decimal PulleyDataRightDistanceCCW { get; set; }
-        public decimal PulleyDataRightDistanceCW { get; set; }
+        public decimal TotalPulleyDataLeftDistance { get; set; }
+        public decimal TotalPulleyDataRightDistance { get; set; }
         public decimal BatteryLevel { get; set; }
         public bool BatteryLow { get; set; }
         public bool InUse { get; set; }
