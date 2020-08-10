@@ -35,6 +35,7 @@ namespace Capstone.DAO
 
                     SqlCommand cmd = new SqlCommand(sqlGetOrderedMachineCheckIns, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
+                    
 
                     if (reader.HasRows)
                     {
@@ -83,7 +84,7 @@ namespace Capstone.DAO
             {
                 if (recentCheckIns[i].BatteryLevel < 94.9M)
                 {
-                    recentCheckIns[i].BatteryLow = true;
+                    recentCheckIns[i].BatteryIssues = true;
                     machinesAlerting.Add(recentCheckIns[i]);
                 }
                 if (recentCheckIns[i].ArmAssistLeft != secondMostRecentCheckIns[i].ArmAssistLeft || 
