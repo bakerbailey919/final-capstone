@@ -205,10 +205,11 @@ namespace Capstone.DAO
 
         private string sqlUpdateMaintenaceData = "UPDATE dbo.DeviceData SET LastMaintenanceDateTime = CURRENT_TIMESTAMP, Time_of_Maintenance_PulleyDataLeftDistance = @leftPulleyDistance, Time_of_Maintenance_PulleyDataRightDistance = @rightPulleyDistance WHERE Serial = @serialToUpdate;";
 
-        public void UpdateMaintenanceData(string inputSerial)
+        public void UpdateMaintenanceCheckPoint(string inputSerial)
         {
-            decimal leftPulleyDistance = 5;
+            decimal leftPulleyDistance = 0M;
             decimal rightPulleyDistance = 0M;
+            recentCheckIns = GetDevices();
 
             for (int i=0; i < recentCheckIns.Count; i++)
             {

@@ -15,5 +15,7 @@ namespace Capstone.DAO
         List<CheckIn> GetMachineData();
 
         List<CheckIn> GetAllDevicesAndRelavantAlerts();
+
+        void UpdateMaintenanceCheckPoint(string inputSerial);
     }
 }

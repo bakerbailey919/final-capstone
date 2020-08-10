@@ -12,6 +12,8 @@
         <h3> Device Type: {{device.machineModelId}} </h3>
         <h3 v-if="device.inUse">Currently In Use</h3>
         <h3 v-else>Not In Use</h3>
+
+        <button v-on:click="sendSerial()"> Maintenance Performed </button>
   </div>
 </template>
 
@@ -27,29 +29,22 @@ export default {
     },
     data() {
     return {
-      devices: [],
-      //alerts: []
+      
 
     };
   },
   created() {
-
-      DeviceService.getDevices()
-      .then( (response) => {
-          this.devices = response.data
-      })
-      .catch( (error) => {
+  },
+  methods: {
+      sendSerial() {
+          DeviceService.sendSerial(this.device.serial)
+          .then ( () => {
+               console.log("Maintenace Checkpoint Updated") 
+          })
+          .catch( (error) => {
           console.error(error);
       });
-
-      /*DeviceService.getAlerts()
-      .then ( (response) => {
-          this.alerts = response.data
-      })
-      .catch( (error) => {
-          console.error(error);
-      });
-      */
+      }
   }
 }
 </script>
