@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-bind:class="{ 'batteryLow' : (device.batteryLow), 'sensor' : (device.machineModelId == 2) }">
+  <div class="card" v-bind:class="{ 'batteryLow' : (device.batteryLow), 'sensor' : (device.machineModelId == 2), 'connectionLost' : (device.connectionLost) }">
         <h3  v-if="device.inUse">
             <div class="circle"></div>
         </h3> 
@@ -64,6 +64,9 @@ export default {
     background-color: lightgreen;
 }
 .batteryLow {
+    background-color: rgb(250, 66, 66);
+}
+.connectionLost {
     background-color: rgb(250, 66, 66);
 }
 .sensor {
