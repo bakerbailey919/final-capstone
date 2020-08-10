@@ -4,13 +4,13 @@
         <table id="table-checkins">
             <thead>
                 <tr>
-                    <th>&nbsp;</th>
                     <th>Audit Log Id</th>
                     <th>Property Name</th>
                     <th>Last Check In</th>
                     <th>Serial #</th>
                     <th>Name</th>
                     <th>Model ID</th>
+                    <th>Battery Level</th>
                     <th>Arm Assist Left</th>
                     <th>Arm Assist Right</th>
                     <th>Arm Cart Left</th>
@@ -19,14 +19,11 @@
                     <th>Pulley Data Left DistanceCW</th>
                     <th>Pulley Data Right DistanceCCW</th>
                     <th>Pulley Data Right DistanceCW</th>
-                    <th>Battery Level</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>
-                        <input type="checkbox" id="insertFeatureHere" />
-                    </td>
                     <td>
                         <input type="text" id="auditLogFilter" v-model="filter.auditLogId" />
                     </td>
@@ -45,30 +42,30 @@
                     <td>
                         <input type="text" id="modelIDFilter" v-model="filter.machineModelId" />
                     </td>
-                    <td> Need a filter here?</td>
-                    <td> Need a filter here?</td>
-                    <td> Need a filter here?</td>
-                    <td> Need a filter here?</td>
-                    <td> Need a filter here?</td>
-                    <td> Need a filter here?</td>
-                    <td> Need a filter here?</td>
-                    <td> Need a filter here?</td>
                     <td>
                         <input type="text" id="batteryLevelFilter" v-model="filter.batteryLevel" />
                     </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    
                 </tr>
                 <tr
                     v-for="checkIn in filteredList" v-bind:key="checkIn.auditLogId"
                 >
-                    <td>
-                        <input type="checkbox" class="insertFeaturHere">
-                    </td>
+                    
                     <td> {{ checkIn.auditLogId }} </td>
                     <td> {{ checkIn.propertyName }} </td>
                     <td> {{ checkIn.lastCheckInTimeUtc }} </td>
                     <td> {{ checkIn.serial }} </td>
                     <td> {{ checkIn.name }} </td>
                     <td> {{ checkIn.machineModelId }} </td>
+                    <td> {{ checkIn.batteryLevel }} </td>
                     <td> {{ checkIn.armAssistLeft }} </td>
                     <td> {{ checkIn.armAssistRight }} </td>
                     <td> {{ checkIn.armCartLeft }} </td>
@@ -77,7 +74,7 @@
                     <td> {{ checkIn.pulleyDataLeftDistanceCW }} </td>
                     <td> {{ checkIn.pulleyDataRightDistanceCCW }} </td>
                     <td> {{ checkIn.pulleyDataRightDistanceCW }} </td>
-                    <td> {{ checkIn.batteryLevel }} </td>
+                    
                 </tr>
             </tbody>
         </table>    
@@ -189,5 +186,9 @@ computed:
 </script>
 
 <style>
+.checkIns {
+    display: inline-block;
+    margin-left: 0px;
 
+}
 </style>

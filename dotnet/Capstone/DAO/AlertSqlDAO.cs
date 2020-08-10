@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using Capstone.Models;
 
 
-namespace Capstone.DAO
+/*namespace Capstone.DAO
 {
     public class AlertSqlDAO : IAlertDAO
     {
@@ -106,3 +106,4 @@ namespace Capstone.DAO
         }
     }
 }
+*/

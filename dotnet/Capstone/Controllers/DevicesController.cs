@@ -30,6 +30,16 @@ namespace Capstone.Controllers
 
             return allDeviceWithRelavantAlerts;
         }
-        
+
+        [Authorize]
+        [HttpPut("{inputSerial}")]
+        public ActionResult UpdateMaintenanceCheckPoint(string inputSerial)
+        {
+            deviceDAO.UpdateMaintenanceCheckPoint(inputSerial);
+
+            return Ok();
+
+        }
+
     }
 }
