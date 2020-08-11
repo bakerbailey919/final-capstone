@@ -12,8 +12,13 @@
         <h3> Device Type: {{device.machineModelId}} </h3>
         <h3 v-if="device.inUse">Currently In Use</h3>
         <h3 v-else>Not In Use</h3>
+        <h3 v-if="device.batteryLow">Battery is Low</h3>
+        <h3 v-else>Battery Good</h3>
 
-        <button v-on:click="sendSerial()"> Maintenance Performed </button>
+        <p> Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}} </p>
+        <p> Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}} </p>
+
+        <button class="maintenanceButton" v-on:click="sendSerial()"> Maintenance Reset </button>
   </div>
 </template>
 
@@ -57,9 +62,10 @@ export default {
     width: 500px;
     text-align: center;
     background-color: lightgreen;
+    
 }
 .batteryLow {
-    background-color: rgb(250, 66, 66);
+    background-color:lightsalmon;
 }
 .connectionLost {
     background-color: rgb(250, 66, 66);
@@ -82,5 +88,9 @@ export default {
     background-color: darkgray;
     margin-top: 8px;
     margin-left: 450px;
+}
+.maintenanceButton {
+    width: 150px;
+    margin-left: 175px;
 }
 </style>

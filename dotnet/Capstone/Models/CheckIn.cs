@@ -23,5 +23,8 @@ namespace Capstone.Models
         public bool BatteryLow { get; set; }
         public bool InUse { get; set; }
         public bool ConnectionLost { get; set; }
+        public decimal LeftDistanceSinceMaintenance { get; set; }
+        public decimal RightDistanceSinceMaintenance { get; set; }
+        public DateTime MaintenanceDateTime { get; set; }
     }
 }
