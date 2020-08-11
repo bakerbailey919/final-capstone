@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-bind:class="{ 'batteryLow' : (device.batteryLow), 'sensor' : (device.machineModelId == 2), 'connectionLost' : (device.connectionLost) }">
+    <div class="card" v-bind:class="{ 'batteryLow' : (device.batteryLow), 'sensor' : (device.machineModelId == 2), 'connectionLost' : (device.connectionLost) }">
         <h3  v-if="device.inUse">
             <div class="circle"></div>
         </h3> 
@@ -15,11 +15,11 @@
         <h3 v-if="device.batteryLow">Battery is Low</h3>
         <h3 v-else>Battery Good</h3>
 
-        <p> Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}} </p>
-        <p> Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}} </p>
+            <p> Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}} </p>
+            <p> Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}} </p>
 
         <button class="maintenanceButton" v-on:click="sendSerial()"> Maintenance Reset </button>
-  </div>
+    </div>
 </template>
 
 
