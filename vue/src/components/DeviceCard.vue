@@ -3,17 +3,18 @@
         <h3  v-if="device.inUse">
             <div class="circle"></div>
         </h3> 
-        <h3 v-else>
+        <h4 v-else>
             <div class="grayCircle"></div>
-        </h3>
-        <h3> Device Name: {{device.name}} </h3>
-        <h3> Serial: {{device.serial}} </h3>
-        <h3> Battery: {{device.batteryLevel}}% </h3> 
-        <h3> Device Type: {{device.machineModelId}} </h3>
+        </h4>
+        <h4> Device Name: {{device.name}} </h4>
+        <h4> Serial: {{device.serial}} </h4>
+        <h4 id="deviceType"> Device Type: {{device.machineModelId}} </h4>
+         
         <h3 v-if="device.connectionLost"> MACHINE DOWN </h3>
-        <p v-else> Machine currently online & paired</p>
+        <h3 v-else> Machine currently online & paired</h3>
         <h3 v-if="device.inUse">Currently In Use</h3>
         <h3 v-else>Not In Use</h3>
+        <h3> Battery: {{device.batteryLevel}}% </h3>
         <h3 v-if="device.batteryLow">Battery is Low</h3>
         <h3 v-else>Battery Good</h3>
 
@@ -90,5 +91,8 @@ export default {
 .maintenanceButton {
   width: 150px;
   margin-left: 175px;
+}
+#deviceType{
+  border-bottom: 2px solid black;
 }
 </style>
