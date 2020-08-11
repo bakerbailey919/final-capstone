@@ -8,8 +8,8 @@ namespace Capstone.Models
     public class Device
     {
         public string Serial { get; set; }
-        public string Name { get; set; }
-        public bool BatteryLow { get; set; }
-        public bool InUse { get; set; }
+        public string LastMaintenanceDateTime { get; set; }
+        public decimal TimeOfMaintenancePulleyDataLeftDistance { get; set; }
+        public decimal TimeOfMaintenancePulleyDataRightDistance { get; set; }
     }
 }
