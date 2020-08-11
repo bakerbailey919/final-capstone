@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <button @click= reloadPage()>Refresh</button>
+    <button @click = reloadPage()>Refresh</button>
     <nav>
       
     </nav>

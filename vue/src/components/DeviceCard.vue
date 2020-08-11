@@ -10,6 +10,8 @@
         <h3> Serial: {{device.serial}} </h3>
         <h3> Battery: {{device.batteryLevel}}% </h3> 
         <h3> Device Type: {{device.machineModelId}} </h3>
+        <h3 v-if="device.connectionLost"> MACHINE DOWN </h3>
+        <p v-else> Machine currently online & paired</p>
         <h3 v-if="device.inUse">Currently In Use</h3>
         <h3 v-else>Not In Use</h3>
         <h3 v-if="device.batteryLow">Battery is Low</h3>
@@ -46,9 +48,7 @@ export default {
           console.error(error);
         });
     },
-    reloadPage() {
-      window.location.reload();
-    },
+  
   },
 };
 </script>
@@ -66,7 +66,7 @@ export default {
   background-color: lightsalmon;
 }
 .connectionLost {
-  background-color: rgb(250, 66, 66);
+  background-color: #E97A7A;
 }
 .sensor {
   border-radius: 0px;

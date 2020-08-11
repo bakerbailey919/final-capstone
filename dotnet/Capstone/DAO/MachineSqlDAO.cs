@@ -43,6 +43,7 @@ namespace Capstone.DAO
                                 Serial = Convert.ToString(reader["Serial"]),
                                 Name = Convert.ToString(reader["Name"]),
                                 MachineModelId = Convert.ToInt32(reader["MachineModelId"]),
+                                Organization = Convert.ToString(reader["Organization"]),
                                 ArmAssistLeft = Convert.ToInt32(reader["ArmAssistLeft"]),
                                 ArmAssistRight = Convert.ToInt32(reader["ArmAssistRight"]),
                                 ArmCartLeft = Convert.ToInt32(reader["ArmCartLeft"]),
