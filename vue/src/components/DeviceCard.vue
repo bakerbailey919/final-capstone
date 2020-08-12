@@ -18,8 +18,8 @@
     <h3 v-if="device.batteryLow">Battery is Low</h3>
     <h3 v-else>Battery Good</h3>
 
-    <p>Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}}</p>
-    <p>Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}}</p>
+    <p>Left Distance Since Maintenance: {{device.totalPulleyDataLeftDistance}}</p>
+    <p>Right Distance Since Maintenance: {{device.totalPulleyDataRightDistance}}</p>
 
     <button class="maintenanceButton" v-on:click="sendSerial()">Maintenance Reset</button>
   </div>
