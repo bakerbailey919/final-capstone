@@ -1,9 +1,5 @@
 <template>
-  <div class="card" style="width: 30rem;" 
-    v-bind:class="{ 'batteryLow' : (device.batteryLow),
-                    'connectionLost' : (device.connectionLost) }">
-
-    
+  <div class="card" style="width: 30rem;" >
       <div class="flex-card-header-container">
         <img class="card-img-top" src="../assets/images/Include_Health_logo.png" alt="Card image cap" />
         <div class="card-body">
@@ -14,8 +10,9 @@
       </div>
 
       <ul class="list-group list-group-flush">
-        <li class="list-group-item" v-if="device.connectionLost">CONNECTION LOST</li>
-        <li class="list-group-item" v-else>Device currently online & paired</li>
+        
+        <li class="list-group-item error-status-bad" v-if="device.connectionLost">CONNECTION LOST</li>
+        <li class="list-group-item error-status-good" v-else>Device currently online & paired</li>
 
         <li class="list-group-item"> Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}}</li>
         <li class="list-group-item"> Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}}</li>
@@ -122,9 +119,7 @@ FROM LOGO
 -->
 
 <style>
-main{
-  background-color: #444444;
-}
+
 .card {
   border: 4px solid #1C1C1C;
   border-radius: 25px;
@@ -133,7 +128,7 @@ main{
   background-color: #2DACB7;
 }
 .connectionLost {
-  background-color: #E97A7A;
+  background-color: #81888B;
 }
 .sensor {
   border-radius: 25px;
@@ -163,7 +158,8 @@ main{
 
 .list-group-item{
   margin: 10px;
-  border: 10px solid #1C1C1C
+  border: 10px solid #1C1C1C;
+  border-radius: 1rem;
 }
 
 img.card-img-top {
@@ -184,6 +180,12 @@ div.progress-bar.progress-bar-striped{
   display: flex;
   align-items: center;
   margin-left: 2.5rem;
+}
+.error-status-bad {
+  background-color: #E97A7A;
+}
+.error-status-good {
+  background: #A1CC3A;
 }
 
 </style>

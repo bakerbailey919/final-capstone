@@ -18,14 +18,5 @@ export default {
 </script>
 
 <style>
-.btn {
-  background-color: #41c0cb;
-  color: #ffffff;
-  margin-top: 2rem;
-  margin-left: 30rem;
-  padding-top: 0.5rem;
-  padding-right: 1.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1.5rem;
-}
+
 </style>

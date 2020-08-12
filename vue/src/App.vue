@@ -44,7 +44,7 @@ FROM LOGO
 -->
 <style>
 body {
-  background-color: #81888B;
+  background-color: #F3F3F3  ;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
 }
 img.logo-img {

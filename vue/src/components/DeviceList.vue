@@ -1,8 +1,7 @@
 <template>
 <div>
     <div>
-       <button type="button" class="btn btn-lg" @click="reloadPage()">Refresh</button>
-        <h1>Device List</h1>
+        <h1>Device Dashboard</h1>
         <select id="orgFilter" v-model="filter.status">
               <option value>Organization - Show All</option>
               <option value="Organization 1">Organization 1</option>
@@ -15,6 +14,7 @@
               <option value>Connection Status - Show All</option>
               <option v-bind:value="true">Connection Lost</option>
   </select>
+  <button type="button" class="btn btn-lg" @click="reloadPage()">Refresh</button>
     </div>   
       <p v-for="device in filteredDevices"
          v-bind:key="device.id" id="card-container">
@@ -95,6 +95,22 @@ export default {
 }
 </script>
 
+<!-- 
+
+INCLUDE HEALTH APPROVED COLORS
+
+#E97A7A - Error
+#41C0CB - Brand Teal
+#2DACB7 - Web Teal
+#F3F3F3 - Light Gray
+#81888B - Gray
+#444444 - Dark Gray
+#1C1C1C - Almost Black
+
+FROM LOGO
+#A1CC3A - Light Green
+-->
+
 <style>
 #card-container{
   display: inline-block;
@@ -107,6 +123,16 @@ select{
   background-color: F3F3F3;
   color: 444444;
   margin-top: 2rem;
+  padding-top: 0.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem;
+}
+.btn {
+  background-color: #41c0cb;
+  color: #ffffff;
+  margin-top: 2rem;
+  margin-left: 30rem;
   padding-top: 0.5rem;
   padding-right: 1.5rem;
   padding-bottom: 0.5rem;
