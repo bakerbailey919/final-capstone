@@ -8,17 +8,20 @@
     <div class="pageRoot">
       <router-view />
     </div>
+    <app-footer />
   </div>
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader.vue";
+import AppFooter from "./components/AppFooter.vue";
 
 export default {
   name: "App",
 
   components: {
     AppHeader,
+    AppFooter
   },
 };
 </script>
@@ -34,6 +37,9 @@ INCLUDE HEALTH APPROVED COLORS
 #81888B - Gray
 #444444 - Dark Gray
 #1C1C1C - Almost Black
+
+FROM LOGO
+#A1CC3A - Light Green
 
 -->
 <style>

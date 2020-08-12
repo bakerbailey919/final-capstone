@@ -30,6 +30,22 @@ export default {
 };
 </script>
 
+<!-- 
+
+INCLUDE HEALTH APPROVED COLORS
+
+#E97A7A - Error
+#41C0CB - Brand Teal
+#2DACB7 - Web Teal
+#F3F3F3 - Light Gray
+#81888B - Gray
+#444444 - Dark Gray
+#1C1C1C - Almost Black
+
+FROM LOGO
+#A1CC3A - Light Green
+-->
+
 <style scoped>
 header {
   height: 86px;
@@ -39,7 +55,7 @@ header {
 }
 nav {
   border-bottom: 10px solid #2dacb7;
-  background-color: #f3f3f3;
+  background-color: #F3F3F3;
 }
 .nav-buttons {
   display: flex;

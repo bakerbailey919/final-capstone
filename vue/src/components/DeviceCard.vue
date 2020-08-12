@@ -1,42 +1,41 @@
 <template>
   <div class="card" style="width: 30rem;" 
-    v-bind:class="{ 'batteryLow' : (device.batteryLow), 
-                    'sensor' : (device.machineModelId == 2), 
+    v-bind:class="{ 'batteryLow' : (device.batteryLow),
                     'connectionLost' : (device.connectionLost) }">
 
-      <img class="card-img-top" src="../assets/images/Include_Health_logo.png" alt="Card image cap" />
-      <div class="card-body">
-        <h5 class="card-title">{{device.name}}</h5>
-        <p class="card-text">Serial: {{device.serial}}</p>
-        <p class="card-text">Device Type: {{device.machineModelId}}</p>
+    
+      <div class="flex-card-header-container">
+        <img class="card-img-top" src="../assets/images/Include_Health_logo.png" alt="Card image cap" />
+        <div class="card-body">
+          <h5 class="card-title">{{device.name}}</h5>
+          <p class="card-text">Serial: {{device.serial}}</p>
+          <p class="card-text">Device Type: {{device.machineModelId}}</p>
+        </div>
       </div>
+
       <ul class="list-group list-group-flush">
         <li class="list-group-item" v-if="device.connectionLost">CONNECTION LOST</li>
         <li class="list-group-item" v-else>Device currently online & paired</li>
 
-        <li class="list-group-item" v-if="device.inUse">Currently In Use</li>
-        <li class="list-group-item" v-else>Not In Use</li>
-
-        <li class="list-group-item"> Battery: {{device.batteryLevel}}%</li>
-        <li>
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped bg-success" 
-                     role="progressbar" 
-                     aria-valuenow ="50" 
-                     aria-valuemin="0" 
-                     aria-valuemax="100"
-                     style="width: 75%" 
-                     >
-                     {{device.batteryLevel}}%
-                     </div>
-            </div>
-        </li>
-        <!--
-        <li class="list-group-item" v-if="device.batteryLow">Battery Low</li>
-        <li class="list-group-item" v-else>Battery Good</li>
-        -->
         <li class="list-group-item"> Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}}</li>
         <li class="list-group-item"> Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}}</li>
+
+        <li class="list-group-item"> Battery Level
+            <div class="progress"> 
+                <div class="progress-bar progress-bar-striped" 
+                     role="progressbar" 
+                     aria-valuenow ='' 
+                     aria-valuemin="0" 
+                     aria-valuemax="90"
+                     v-bind:style = batteryPercentage  
+                     >
+                     {{Math.floor(device.batteryLevel)}}%
+                </div>
+            </div>
+        </li>
+
+        <li class="list-group-item" v-if="device.inUse">Currently In Use</li>
+        <li class="list-group-item" v-else>Not In Use</li>
 
       </ul>
 
@@ -95,9 +94,14 @@ export default {
         .catch((error) => {
           console.error(error);
         });
-    },
-  
+    }
   },
+  computed: {
+    batteryPercentage() {
+      return "width: " + Math.floor(this.device.batteryLevel) + "%"
+    }
+  }
+
 };
 </script>
 
@@ -112,6 +116,9 @@ INCLUDE HEALTH APPROVED COLORS
 #81888B - Gray
 #444444 - Dark Gray
 #1C1C1C - Almost Black
+
+FROM LOGO
+#A1CC3A - Light Green
 -->
 
 <style>
@@ -121,13 +128,9 @@ main{
 .card {
   border: 4px solid #1C1C1C;
   border-radius: 25px;
-  
   margin: 20px;
-  /*
-  width: 500px;
-  */
   text-align: center;
-  background-color: #41C0CB;
+  background-color: #2DACB7;
 }
 .connectionLost {
   background-color: #E97A7A;
@@ -153,20 +156,34 @@ main{
 }
 .maintenanceButton {
   width: 10rem;
-  
 }
 #deviceType{
   border-bottom: 2px solid #1C1C1C;
 }
+
 .list-group-item{
   margin: 10px;
   border: 10px solid #1C1C1C
 }
+
 img.card-img-top {
   width: 5rem;
-  margin-left: 2rem;
-  margin-top: 2rem;
-  
+}
+
+div.progress{
+  border: 2px solid #1C1C1C;
+  border-radius: .5rem;
+  height: 1.5rem;
+}
+
+div.progress-bar.progress-bar-striped{
+  background-color: #A1CC3A; 
+}
+
+.flex-card-header-container {
+  display: flex;
+  align-items: center;
+  margin-left: 2.5rem;
 }
 
 </style>
