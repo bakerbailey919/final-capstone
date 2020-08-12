@@ -1,6 +1,8 @@
 <template>
 <div>
-  <select id="orgFilter" v-model="filter.status">
+    <div>
+        <h1>Device List</h1>
+        <select id="orgFilter" v-model="filter.status">
               <option value>Organization</option>
               <option value="Organization 1">Organization 1</option>
               <option value="Organization 2">Organization 2</option>
@@ -12,9 +14,7 @@
               <option value>Connection Status - Show All</option>
               <option v-bind:value="true">Connection Lost</option>
   </select>
-
-  <h1>Device List</h1>
-        
+    </div>   
       <p v-for="device in filteredDevices"
          v-bind:key="device.id" id="card-container">
             <device-card v-bind:device="device" />      
@@ -97,7 +97,16 @@ export default {
 }
 h1{
   text-align: center;
-  margin-right: 100px;
-  font-size: 5rem;
+  font-size: 3rem;
 }
+select{
+  background-color: F3F3F3;
+  color: 444444;
+  margin-top: 2rem;
+  padding-top: 0.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem;
+}
+
 </style>
