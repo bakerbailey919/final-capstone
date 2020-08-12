@@ -6,7 +6,7 @@
     <div id="nav">
       <router-link class="nav-item" v-bind:to="{ name: 'home' }">
         <i class="fas fa-home"></i> <!-- This is a font awesome icon -->
-        Home 
+        Devices 
       </router-link>&nbsp;|&nbsp;
       <router-link
         class="nav-item"
@@ -38,7 +38,22 @@ export default {
 }
 </script>
 
-<!-- Application-Wide Styles go here -->
+<!-- Application-Wide Styles go here 
+
+INCLUDE HEALTH APPROVED COLORS
+
+#E97A7A - Error
+#41C0CB - Brand Teal
+#2DACB7 - Web Teal
+#F3F3F3 - Light Gray
+#81888B - Gray
+#444444 - Dark Gray
+#1C1C1C - Almost Black
+
+-->
 <style>
 
+body{
+background-color: #81888B;
+}
 </style>

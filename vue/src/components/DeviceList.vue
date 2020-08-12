@@ -59,4 +59,8 @@ export default {
 #card-container{
   display: inline-block;
 }
+h2{
+  text-align: center;
+  margin-right: 100px;
+}
 </style>
