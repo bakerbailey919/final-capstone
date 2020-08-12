@@ -18,9 +18,22 @@
         <li class="list-group-item" v-else>Not In Use</li>
 
         <li class="list-group-item"> Battery: {{device.batteryLevel}}%</li>
+        <li>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" 
+                     role="progressbar" 
+                     aria-valuenow ="50" 
+                     aria-valuemin="0" 
+                     aria-valuemax="100" 
+                     style="width: 35%">
+                     {{device.batteryLevel}}%
+                     </div>
+            </div>
+        </li>
+        <!--
         <li class="list-group-item" v-if="device.batteryLow">Battery Low</li>
         <li class="list-group-item" v-else>Battery Good</li>
-
+        -->
         <li class="list-group-item"> Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}}</li>
         <li class="list-group-item"> Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}}</li>
 
@@ -105,24 +118,24 @@ main{
   background-color: #444444;
 }
 .card {
-  border: 2px solid black;
-  border-radius: 50px;
+  border: 4px solid #1C1C1C;
+  border-radius: 25px;
   
   margin: 20px;
   /*
   width: 500px;
   */
   text-align: center;
-  background-color: #2DACB7;
+  background-color: #41C0CB;
 }
 .batteryLow {
-  background-color: lightsalmon;
+  
 }
 .connectionLost {
   background-color: #E97A7A;
 }
 .sensor {
-  border-radius: 0px;
+  border-radius: 25px;
 }
 .circle {
   height: 20px;
@@ -156,4 +169,5 @@ img.card-img-top {
   margin-top: 2rem;
   
 }
+
 </style>
