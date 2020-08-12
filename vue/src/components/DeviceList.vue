@@ -13,7 +13,7 @@
               <option v-bind:value="true">Connection Lost</option>
   </select>
 
-  <h2>Device List</h2>
+  <h1>Device List</h1>
         
       <p v-for="device in filteredDevices"
          v-bind:key="device.id" id="card-container">
@@ -95,8 +95,9 @@ export default {
 #card-container{
   display: inline-block;
 }
-h2{
+h1{
   text-align: center;
   margin-right: 100px;
+  font-size: 5rem;
 }
 </style>

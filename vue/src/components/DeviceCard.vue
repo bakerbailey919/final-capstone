@@ -20,11 +20,12 @@
         <li class="list-group-item"> Battery: {{device.batteryLevel}}%</li>
         <li>
             <div class="progress">
-                <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" 
+                <div class="progress-bar progress-bar-striped bg-success" 
                      role="progressbar" 
                      aria-valuenow ="50" 
                      aria-valuemin="0" 
-                     aria-valuemax="100" 
+                     aria-valuemax="100"
+                     style="width: 75%" 
                      >
                      {{device.batteryLevel}}%
                      </div>
@@ -155,19 +156,17 @@ main{
   
 }
 #deviceType{
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #1C1C1C;
 }
-li{
+.list-group-item{
   margin: 10px;
+  border: 10px solid #1C1C1C
 }
 img.card-img-top {
   width: 5rem;
   margin-left: 2rem;
   margin-top: 2rem;
   
-}
-li.progress.progress-bar-animated{
-  width: 70%;
 }
 
 </style>

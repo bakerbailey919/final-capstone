@@ -38,7 +38,8 @@ INCLUDE HEALTH APPROVED COLORS
 -->
 <style>
 body {
-  background-color: #81888b;
+  background-color: #81888B;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 img.logo-img {
   max-width: 100%;
