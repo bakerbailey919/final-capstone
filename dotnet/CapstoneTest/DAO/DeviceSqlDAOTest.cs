@@ -31,8 +31,8 @@ namespace CapstoneTest.DAO
                 SqlCommand insertCmd = new SqlCommand(sql_deviceInsert, conn);
                 insertCmd.ExecuteNonQuery();
 
-                string sql_machineCheckInsInsert = "INSERT INTO MachineCheckIns (AuditLogId, PropertyName, LastCheckInTimeUtc, Serial, Name, MachineModelId, ArmAssistLeft, ArmAssistRight, ArmCartLeft, ArmCartRight, Total_PulleyDataLeftDistance, Total_PulleyDataRightDistance, BatteryLevel) " +
-               $"VALUES ('952593', 'LastCheckInTimeUtc', '8/27/2019 23:15', '{serial}', 'June', '1', '30740', '25750', '7320', '8670', '317500', '324939', '10')";
+                string sql_machineCheckInsInsert = "INSERT INTO MachineCheckIns (AuditLogId, PropertyName, LastCheckInTimeUtc, Serial, Name, MachineModelId, Organization, ArmAssistLeft, ArmAssistRight, ArmCartLeft, ArmCartRight, Total_PulleyDataLeftDistance, Total_PulleyDataRightDistance, BatteryLevel) " +
+               $"VALUES ('952593', 'LastCheckInTimeUtc', '8/27/2019 23:15', '{serial}', 'June', '1', 'Org 1','30740', '25750', '7320', '8670', '317500', '324939', '10')";
                 SqlCommand machineCheckInsInsertCmd = new SqlCommand(sql_machineCheckInsInsert, conn);
                 machineCheckInsInsertCmd.ExecuteNonQuery();
             }
