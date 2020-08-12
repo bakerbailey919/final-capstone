@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <button type="button" class="btn btn-lg" @click="reloadPage()">Refresh</button>
+   
     <device-list />
   </div>
 </template>
@@ -13,11 +13,7 @@ export default {
   components: {
     DeviceList,
   },
-  methods: {
-    reloadPage() {
-      window.location.reload();
-    },
-  },
+  
 };
 </script>
 

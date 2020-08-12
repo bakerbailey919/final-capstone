@@ -1,6 +1,7 @@
 <template>
 <div>
     <div>
+       <button type="button" class="btn btn-lg" @click="reloadPage()">Refresh</button>
         <h1>Device List</h1>
         <select id="orgFilter" v-model="filter.status">
               <option value>Organization - Show All</option>
@@ -30,6 +31,11 @@ export default {
   name: "device-list",
   components : {
     DeviceCard
+  },
+  methods: {
+    reloadPage() {
+      window.location.reload();
+    },
   },
   data() {
     return {
