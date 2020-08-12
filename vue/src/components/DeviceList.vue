@@ -1,7 +1,7 @@
 <template>
 <div>
   <h2>Device List</h2>
-      <p v-for="device in devices"
+      <p v-for="device in orderedDevices"
          v-bind:key="device.id" id="card-container">
             <device-card v-bind:device="device" />      
       </p>
@@ -32,15 +32,25 @@ export default {
           console.error(error);
       });
 
-      /*DeviceService.getAlerts()
-      .then ( (response) => {
-          this.alerts = response.data
-      })
-      .catch( (error) => {
-          console.error(error);
-      });
-      */
 
+  },
+  computed: {
+    orderedDevices(){
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      return this.devices.sort( (device1, device2) => {
+        console.log(device1, device2)
+        //if (device1.connectionLost && !device2.connectionLost) return 1; // Use device 1
+        //if (device2.connectionLost && !device2.connectionLost) return -1; // Use device 2
+
+        if (device1.batteryLow && !device2.batteryLow) return 1; // Use device 1
+        else if (device2.batteryLow && !device2.batteryLow) return -1; // Use device 2
+
+        return 1;
+
+      }) 
+
+      
+    }
   }
 }
 </script>

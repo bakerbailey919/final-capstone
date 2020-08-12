@@ -13,6 +13,7 @@ namespace Capstone.Models
         public string Serial { get; set; }
         public string Name { get; set; }
         public int MachineModelId { get; set; }
+        public string Organization { get; set; }
         public int ArmAssistLeft { get; set; }
         public int ArmAssistRight { get; set; }
         public int ArmCartLeft { get; set; }

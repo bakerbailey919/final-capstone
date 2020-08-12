@@ -10,6 +10,7 @@
                     <th>Serial #</th>
                     <th>Name</th>
                     <th>Model ID</th>
+                    <th>Organization</th>
                     <th>Battery Level</th>
                     <th>Arm Assist Left</th>
                     <th>Arm Assist Right</th>
@@ -43,6 +44,9 @@
                         <input type="text" id="modelIDFilter" v-model="filter.machineModelId" />
                     </td>
                     <td>
+                        <input type="text" id="organizationFilter" v-model="filter.organization" />
+                    </td>
+                    <td>
                         <input type="text" id="batteryLevelFilter" v-model="filter.batteryLevel" />
                     </td>
                     <td> </td>
@@ -65,6 +69,7 @@
                     <td> {{ checkIn.serial }} </td>
                     <td> {{ checkIn.name }} </td>
                     <td> {{ checkIn.machineModelId }} </td>
+                    <td> {{ checkIn.organization }} </td>
                     <td> {{ checkIn.batteryLevel }} </td>
                     <td> {{ checkIn.armAssistLeft }} </td>
                     <td> {{ checkIn.armAssistRight }} </td>
@@ -101,6 +106,7 @@ export default
         serial: "",
         name: "",
         machineModelId: "",
+        organization: "",
         batteryLevel: ""
       }
     };
@@ -165,9 +171,16 @@ computed:
                 
             {
                 filteredCheckIns = filteredCheckIns.filter((chkin) =>
-                chkin.machineModelId
+                (chkin.machineModelId == this.filter.machineModelId)
+                );
+            }
+            if (this.filter.organization != "") 
+                
+            {
+                filteredCheckIns = filteredCheckIns.filter((chkin) =>
+                chkin.organization
                     .toLowerCase()
-                    .includes(this.filter.machineModelId.toLowerCase())
+                    .includes(this.filter.organization.toLowerCase())
                 );
             }
 

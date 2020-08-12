@@ -1,28 +1,28 @@
 <template>
-  <div
-    class="card"
-    v-bind:class="{ 'batteryLow' : (device.batteryLow), 'sensor' : (device.machineModelId == 2), 'connectionLost' : (device.connectionLost) }"
-  >
-    <h3 v-if="device.inUse">
-      <div class="circle"></div>
-    </h3>
-    <h3 v-else>
-      <div class="grayCircle"></div>
-    </h3>
-    <h3>Device Name: {{device.name}}</h3>
-    <h3>Serial: {{device.serial}}</h3>
-    <h3>Battery: {{device.batteryLevel}}%</h3>
-    <h3>Device Type: {{device.machineModelId}}</h3>
-    <h3 v-if="device.inUse">Currently In Use</h3>
-    <h3 v-else>Not In Use</h3>
-    <h3 v-if="device.batteryLow">Battery is Low</h3>
-    <h3 v-else>Battery Good</h3>
+    <div class="card" v-bind:class="{ 'batteryLow' : (device.batteryLow), 'sensor' : (device.machineModelId == 2), 'connectionLost' : (device.connectionLost) }">
+        <h3  v-if="device.inUse">
+            <div class="circle"></div>
+        </h3> 
+        <h4 v-else>
+            <div class="grayCircle"></div>
+        </h4>
+        <h4> Device Name: {{device.name}} </h4>
+        <h4> Serial: {{device.serial}} </h4>
+        <h4 id="deviceType"> Device Type: {{device.machineModelId}} </h4>
+         
+        <h3 v-if="device.connectionLost"> MACHINE DOWN </h3>
+        <h3 v-else> Machine currently online & paired</h3>
+        <h3 v-if="device.inUse">Currently In Use</h3>
+        <h3 v-else>Not In Use</h3>
+        <h3> Battery: {{device.batteryLevel}}% </h3>
+        <h3 v-if="device.batteryLow">Battery is Low</h3>
+        <h3 v-else>Battery Good</h3>
 
-    <p>Left Distance Since Maintenance: {{device.totalPulleyDataLeftDistance}}</p>
-    <p>Right Distance Since Maintenance: {{device.totalPulleyDataRightDistance}}</p>
+            <p> Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}} </p>
+            <p> Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}} </p>
 
-    <button class="maintenanceButton" v-on:click="sendSerial()">Maintenance Reset</button>
-  </div>
+        <button class="maintenanceButton" v-on:click="sendSerial()"> Maintenance Reset </button>
+    </div>
 </template>
 
 
@@ -49,9 +49,7 @@ export default {
           console.error(error);
         });
     },
-    reloadPage() {
-      window.location.reload();
-    },
+  
   },
 };
 </script>
@@ -69,7 +67,7 @@ export default {
   background-color: lightsalmon;
 }
 .connectionLost {
-  background-color: rgb(250, 66, 66);
+  background-color: #E97A7A;
 }
 .sensor {
   border-radius: 0px;
@@ -93,5 +91,8 @@ export default {
 .maintenanceButton {
   width: 150px;
   margin-left: 175px;
+}
+#deviceType{
+  border-bottom: 2px solid black;
 }
 </style>
