@@ -1,10 +1,10 @@
 <template>
-  <div class="card" style="width: 25rem;" 
+  <div class="card" style="width: 30rem;" 
     v-bind:class="{ 'batteryLow' : (device.batteryLow), 
                     'sensor' : (device.machineModelId == 2), 
                     'connectionLost' : (device.connectionLost) }">
 
-      <img class="card-img-top" src="" alt="Card image cap" />
+      <img class="card-img-top" src="../assets/images/Include_Health_logo.png" alt="Card image cap" />
       <div class="card-body">
         <h5 class="card-title">{{device.name}}</h5>
         <p class="card-text">Serial: {{device.serial}}</p>
@@ -149,5 +149,11 @@ main{
 }
 li{
   margin: 10px;
+}
+img.card-img-top {
+  width: 5rem;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  
 }
 </style>
