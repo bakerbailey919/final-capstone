@@ -1,4 +1,36 @@
 <template>
+  <div class="card" style="width: 25rem;" 
+    v-bind:class="{ 'batteryLow' : (device.batteryLow), 
+                    'sensor' : (device.machineModelId == 2), 
+                    'connectionLost' : (device.connectionLost) }">
+
+      <img class="card-img-top" src="" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">{{device.name}}</h5>
+        <p class="card-text">Serial: {{device.serial}}</p>
+        <p class="card-text">Device Type: {{device.machineModelId}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" v-if="device.connectionLost">CONNECTION LOST</li>
+        <li class="list-group-item" v-else>Device currently online & paired</li>
+
+        <li class="list-group-item" v-if="device.inUse">Currently In Use</li>
+        <li class="list-group-item" v-else>Not In Use</li>
+
+        <li class="list-group-item"> Battery: {{device.batteryLevel}}%</li>
+        <li class="list-group-item" v-if="device.batteryLow">Battery Low</li>
+        <li class="list-group-item" v-else>Battery Good</li>
+
+        <li class="list-group-item"> Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}}</li>
+        <li class="list-group-item"> Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}}</li>
+
+      </ul>
+
+      <div class="card-body">
+        <button class="maintenanceButton" v-on:click="sendSerial()">Maintenance Reset</button>
+      </div>
+  </div>
+    <!--
     <div class="card" v-bind:class="{ 'batteryLow' : (device.batteryLow), 'sensor' : (device.machineModelId == 2), 'connectionLost' : (device.connectionLost) }">
         <h3  v-if="device.inUse">
             <div class="circle"></div>
@@ -23,6 +55,7 @@
 
         <button class="maintenanceButton" v-on:click="sendSerial()"> Maintenance Reset </button>
     </div>
+    -->
 </template>
 
 
@@ -54,14 +87,33 @@ export default {
 };
 </script>
 
+<!-- 
+
+INCLUDE HEALTH APPROVED COLORS
+
+#E97A7A - Error
+#41C0CB - Brand Teal
+#2DACB7 - Web Teal
+#F3F3F3 - Light Gray
+#81888B - Gray
+#444444 - Dark Gray
+#1C1C1C - Almost Black
+-->
+
 <style>
+main{
+  background-color: #444444;
+}
 .card {
   border: 2px solid black;
   border-radius: 50px;
+  
   margin: 20px;
+  /*
   width: 500px;
+  */
   text-align: center;
-  background-color: lightgreen;
+  background-color: #2DACB7;
 }
 .batteryLow {
   background-color: lightsalmon;
@@ -89,10 +141,13 @@ export default {
   margin-left: 450px;
 }
 .maintenanceButton {
-  width: 150px;
-  margin-left: 175px;
+  width: 10rem;
+  
 }
 #deviceType{
   border-bottom: 2px solid black;
+}
+li{
+  margin: 10px;
 }
 </style>
