@@ -1,41 +1,26 @@
 <!-- Main Application Template. 
      Note that you have classes from bootstrap available to you.
      See https://getbootstrap.com/docs/4.0/components/alerts/ for reference on bootstrap -->
+
 <template>
-  <div id="app" class="container">
-    <div id="nav">
-      <router-link class="nav-item" v-bind:to="{ name: 'home' }">
-        <i class="fas fa-home"></i> <!-- This is a font awesome icon -->
-        Devices 
-      </router-link>&nbsp;|&nbsp;
-      <router-link
-        class="nav-item"
-        v-bind:to="{name: 'machineCheckins'}">Check-In Log</router-link>
-      <router-link
-        class="nav-item"
-        v-bind:to="{ name: 'register' }"
-        v-if="!$store.state.token">&nbsp;|&nbsp;Register</router-link>
-      <router-link
-        class="nav-item"
-        v-bind:to="{ name: 'login' }"
-        v-if="!$store.state.token">
-        &nbsp;|&nbsp;Login
-      </router-link>
-      <router-link
-        class="nav-item"
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token">
-        &nbsp;|&nbsp;Logout
-      </router-link>
+  <div id="app">
+    <app-header />
+    <div class="pageRoot">
+      <router-view />
     </div>
-    <router-view />
   </div>
 </template>
 
 <script>
+import AppHeader from "./components/AppHeader.vue";
+
 export default {
-  
-}
+  name: "App",
+
+  components: {
+    AppHeader,
+  },
+};
 </script>
 
 <!-- Application-Wide Styles go here 
@@ -52,8 +37,11 @@ INCLUDE HEALTH APPROVED COLORS
 
 -->
 <style>
-
-body{
-background-color: #81888B;
+body {
+  background-color: #81888b;
+}
+img.logo-img {
+  max-width: 100%;
+  height: auto;
 }
 </style>
