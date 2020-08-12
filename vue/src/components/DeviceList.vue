@@ -1,7 +1,7 @@
 <template>
 <div>
   <select id="orgFilter" v-model="filter.status">
-              <option value>Organization</option>
+              <option value>Organization - Show All</option>
               <option value="Organization 1">Organization 1</option>
               <option value="Organization 2">Organization 2</option>
               <option value="Organization 3">Organization 3</option>
@@ -83,8 +83,6 @@ export default {
         filteredDevices = filteredDevices.filter( (device) => 
           device.connectionLost == this.filter.connectionStatus);
       }
-      
-      
       return filteredDevices;
     }
   }

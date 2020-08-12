@@ -35,6 +35,9 @@ INCLUDE HEALTH APPROVED COLORS
 #444444 - Dark Gray
 #1C1C1C - Almost Black
 
+FROM LOGO
+#A1CC3A - Light Green
+
 -->
 <style>
 body {
