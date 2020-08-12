@@ -1,7 +1,21 @@
 <template>
 <div>
+  <select id="orgFilter" v-model="filter.status">
+              <option value>Organization</option>
+              <option value="Organization 1">Organization 1</option>
+              <option value="Organization 2">Organization 2</option>
+              <option value="Organization 3">Organization 3</option>
+              <option value="Organization 4">Organization 4</option>
+              <option value="Organization 5">Organization 5</option>
+  </select>
+  <select id="connectionFilter" v-model="filter.connectionStatus">
+              <option value>Connection Status - Show All</option>
+              <option v-bind:value="true">Connection Lost</option>
+  </select>
+
   <h2>Device List</h2>
-      <p v-for="device in orderedDevices"
+        
+      <p v-for="device in filteredDevices"
          v-bind:key="device.id" id="card-container">
             <device-card v-bind:device="device" />      
       </p>
@@ -20,7 +34,11 @@ export default {
   data() {
     return {
       devices: [],
-      alerts: []
+      filter: {
+        status: "",
+        connectionStatus: ""
+      }
+      
     };
   },
   created() {
@@ -48,8 +66,26 @@ export default {
         return 1;
 
       }) 
+    },
+    filteredDevices() 
+    {
+      let filteredDevices = this.devices;
 
+      if (this.filter.status != "") 
+      {
+        filteredDevices = filteredDevices.filter( (device) =>
+          device.organization === this.filter.status);
+      }
+      if (this.filter.connectionStatus == true){
+
+        console.log(this.device, this.filter);
+
+        filteredDevices = filteredDevices.filter( (device) => 
+          device.connectionLost == this.filter.connectionStatus);
+      }
       
+      
+      return filteredDevices;
     }
   }
 }

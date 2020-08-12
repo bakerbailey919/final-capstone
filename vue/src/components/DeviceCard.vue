@@ -128,9 +128,6 @@ main{
   text-align: center;
   background-color: #41C0CB;
 }
-.batteryLow {
-  
-}
 .connectionLost {
   background-color: #E97A7A;
 }
