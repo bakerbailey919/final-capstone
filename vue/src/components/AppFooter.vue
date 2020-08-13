@@ -27,14 +27,22 @@ footer {
   color:#444444 ;
   grid-area: navBar;
   text-align: center;
+<<<<<<< HEAD
   -moz-box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.3);
   position: relative;
+=======
+>>>>>>> ac4e0206c90cfd7ab7e358bb8a2b9b90da4c2034
     -webkit-box-shadow: 0 -4px 5px rgba(0,0,0,.3);
     -moz-box-shadow: 0 -4px 5px rgba(0,0,0,.3);
     box-shadow: 0 -4px 5px rgba(0,0,0,.3);
     position : relative;
+<<<<<<< HEAD
+=======
+    
+   
+>>>>>>> ac4e0206c90cfd7ab7e358bb8a2b9b90da4c2034
 }
 img {
   padding-top: 5px;

@@ -46,9 +46,11 @@ FROM LOGO
 body {
   background-color: #F3F3F3  ;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  color: #1C1C1C;
 }
 img.logo-img {
   max-width: 100%;
   height: auto;
 }
+
 </style>
