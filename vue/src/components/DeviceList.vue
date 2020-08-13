@@ -19,7 +19,7 @@
         <button type="button" class="btn" @click="reloadPage()">Refresh</button>
       </div>
     </div>
-    <div>
+    <div class="card-container">
       <p v-for="device in filteredDevices" v-bind:key="device.id" id="card-container">
         <device-card v-bind:device="device" />
       </p>
@@ -119,6 +119,7 @@ FROM LOGO
   text-align: center;
   font-size: 2rem;
   color: #444444;
+  margin-left: 57px;
 }
 select {
   background-color: F3F3F3;
@@ -165,5 +166,8 @@ select {
 }
 .space {
   width: 10px;
+}
+.card-container {
+  margin-left: 58px;
 }
 </style>
