@@ -54,7 +54,6 @@ header {
   text-align: center;
 }
 nav {
-  /* border-bottom: 10px solid #2dacb7; */
   background-color: #F3F3F3;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
 }
