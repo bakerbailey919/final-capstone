@@ -14,10 +14,16 @@
         <li class="list-group-item" id="connection-bad" v-if="device.connectionLost">CONNECTION LOST</li>
         <li class="list-group-item" id="connection-good" v-else>DEVICE ONLINE & PAIRED</li>
 
-        <li class="list-group-item"> Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}}</li>
-        <li class="list-group-item"> Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}}</li>
-
-        <li class="list-group-item"> Battery Level
+        <li class="list-group-item maintenance"
+            v-bind:class="{'list-group-item maintenance bad' : (device.pastMaintenance)}">
+            Cable Travel Maintenance Trip Meter
+            <div id="maintenance-flex-container">
+              <div> Left: {{device.leftDistanceSinceMaintenance}}</div>
+              <div> Right: {{device.rightDistanceSinceMaintenance}}</div>
+            </div>
+        </li>
+        
+        <li class="list-group-item" id="battery-box"> Battery Level
             <div class="progress"> 
                 <div class="progress-bar progress-bar-striped" 
                 v-bind:class="{'progress-bar progress-bar-striped batteryLow':(device.batteryLow)}" 
@@ -103,28 +109,8 @@ FROM LOGO
   text-align: center;
   background-color: #81888B;
 }
-.connectionLost {
-  background-color: #81888B;
-}
-.sensor {
-  border-radius: 25px;
-}
-.circle {
-  height: 20px;
-  width: 20px;
-  border-radius: 10px;
-  background-color: green;
-  margin-top: 8px;
-  margin-left: 450px;
-}
-.grayCircle {
-  height: 20px;
-  width: 20px;
-  border-radius: 10px;
-  background-color: darkgray;
-  margin-top: 8px;
-  margin-left: 450px;
-}
+
+
 .maintenanceButton {
   width: 10rem;
 }
@@ -142,6 +128,9 @@ div.progress{
 div.progress-bar.progress-bar-striped{
   background-color: #A1CC3A; 
 }
+div.progress-bar.progress-bar-striped.batteryLow{
+  background-color: #E97A7A;
+}
 
 .flex-card-header-container {
   display: flex;
@@ -150,17 +139,31 @@ div.progress-bar.progress-bar-striped{
 }
 .list-group-item{
   margin: 11px;
-  border: 10px solid #1C1C1C;
   border-radius: 1rem!important;
+  background-color: #F3F3F3;
 }
 #connection-bad {
   background-color: #E97A7A;
 }
 #connection-good {
-  background-color: #A1CC3A;
+  background-color: #2DACB7;
 }
-.progress-bar.progress-bar-striped.batteryLow{
+
+#maintenance-flex-container{
+  display: flex;
+  justify-content: space-between;
+}
+.list-group-item.maintenance {
+  background-color: #2DACB7;
+}
+.list-group-item.maintenance.bad {
   background-color: #E97A7A;
 }
+li.list-group-item div.progress{
+  background-color: #F3F3F3;
+}
+
+
+
 
 </style>
