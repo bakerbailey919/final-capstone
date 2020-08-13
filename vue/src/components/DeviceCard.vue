@@ -33,13 +33,13 @@
                      aria-valuemax="90"
                      v-bind:style = batteryPercentage  
                      >
-                     {{Math.floor(device.batteryLevel)}}%
+                     <span id="battery-percentage-number"> {{Math.floor(device.batteryLevel)}}% </span>
                 </div>
             </div>
         </li>
 
-        <li class="list-group-item" v-if="device.inUse">Currently In Use</li>
-        <li class="list-group-item" v-else>Not In Use</li>
+        <li class="list-group-item in-use" v-if="device.inUse">Currently In Use</li>
+        <li class="list-group-item not-in-use" v-else>Not In Use</li>
 
       </ul>
 
@@ -83,9 +83,7 @@ export default {
 
 };
 </script>
-
 <!-- 
-
 INCLUDE HEALTH APPROVED COLORS
 
 #E97A7A - Error
@@ -99,7 +97,6 @@ INCLUDE HEALTH APPROVED COLORS
 FROM LOGO
 #A1CC3A - Light Green
 -->
-
 <style>
 
 .card {
@@ -109,29 +106,23 @@ FROM LOGO
   text-align: center;
   background-color: #81888B;
 }
-
-
 .maintenanceButton {
   width: 10rem;
 }
-
 img.card-img-top {
   width: 5rem;
 }
-
 div.progress{
   border: 2px solid #1C1C1C;
   border-radius: .5rem;
   height: 1.5rem;
 }
-
 div.progress-bar.progress-bar-striped{
   background-color: #A1CC3A; 
 }
 div.progress-bar.progress-bar-striped.batteryLow{
   background-color: #E97A7A;
 }
-
 .flex-card-header-container {
   display: flex;
   align-items: center;
@@ -141,6 +132,7 @@ div.progress-bar.progress-bar-striped.batteryLow{
   margin: 11px;
   border-radius: 1rem!important;
   background-color: #F3F3F3;
+  border: 2px solid #1C1C1C !important;
 }
 #connection-bad {
   background-color: #E97A7A;
@@ -148,7 +140,6 @@ div.progress-bar.progress-bar-striped.batteryLow{
 #connection-good {
   background-color: #2DACB7;
 }
-
 #maintenance-flex-container{
   display: flex;
   justify-content: space-between;
@@ -161,6 +152,16 @@ div.progress-bar.progress-bar-striped.batteryLow{
 }
 li.list-group-item div.progress{
   background-color: #F3F3F3;
+}
+.progress-bar {
+  color: #1C1C1C;
+  font-weight: bold;
+}
+#battery-box{
+  background-color: #81888B;
+}
+.list-group-item.in-use{
+  background-color: #A1CC3A;
 }
 
 
