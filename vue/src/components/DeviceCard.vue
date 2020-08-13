@@ -138,14 +138,14 @@ div.progress-bar.progress-bar-striped.batteryLow{
   background-color: #E97A7A;
 }
 #connection-good {
-  background-color: #2DACB7;
+  background-color: #A1CC3A;
 }
 #maintenance-flex-container{
   display: flex;
   justify-content: space-between;
 }
 .list-group-item.maintenance {
-  background-color: #2DACB7;
+  background-color: #A1CC3A;
 }
 .list-group-item.maintenance.bad {
   background-color: #E97A7A;
@@ -163,6 +163,10 @@ li.list-group-item div.progress{
 .list-group-item.in-use{
   background-color: #A1CC3A;
 }
+.list-group-item.not-in-use{
+  background-color: #81888B;
+}
+
 
 
 

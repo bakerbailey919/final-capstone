@@ -117,7 +117,7 @@ FROM LOGO
   text-align: center;
   font-size: 2rem;
   color: #444444;
-  
+  margin-left: 57px;
 }
 select {
   background-color: F3F3F3;
