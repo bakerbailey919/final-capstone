@@ -26,12 +26,12 @@ footer {
   background-color:  #f3f3f3;
   grid-area: navBar;
   text-align: center;
--moz-box-shadow: 0 -4px 5px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 -4px 5px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 -4px 5px rgba(0,0,0,.3);
     box-shadow: 0 -4px 5px rgba(0,0,0,.3);
+
     position : relative;
     
-
    
 }
 img {
