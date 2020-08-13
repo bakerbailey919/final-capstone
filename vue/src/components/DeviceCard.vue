@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="width: 30rem;" >
+  <div class="card" style="width: 25rem;" >
       <div class="flex-card-header-container">
         <img class="card-img-top" src="../assets/images/Include_Health_logo.png" alt="Card image cap" />
         <div class="card-body">
@@ -11,8 +11,8 @@
 
       <ul class="list-group list-group-flush">
         
-        <li class="list-group-item error-status-bad" v-if="device.connectionLost">CONNECTION LOST</li>
-        <li class="list-group-item error-status-good" v-else>Device currently online & paired</li>
+        <li class="list-group-item" id="connection-bad" v-if="device.connectionLost">CONNECTION LOST</li>
+        <li class="list-group-item" id="connection-good" v-else>DEVICE ONLINE & PAIRED</li>
 
         <li class="list-group-item"> Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}}</li>
         <li class="list-group-item"> Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}}</li>
@@ -20,6 +20,7 @@
         <li class="list-group-item"> Battery Level
             <div class="progress"> 
                 <div class="progress-bar progress-bar-striped" 
+                v-bind:class="{'progress-bar progress-bar-striped batteryLow':(device.batteryLow)}" 
                      role="progressbar" 
                      aria-valuenow ='' 
                      aria-valuemin="0" 
@@ -40,32 +41,7 @@
         <button class="maintenanceButton" v-on:click="sendSerial()">Maintenance Reset</button>
       </div>
   </div>
-    <!--
-    <div class="card" v-bind:class="{ 'batteryLow' : (device.batteryLow), 'sensor' : (device.machineModelId == 2), 'connectionLost' : (device.connectionLost) }">
-        <h3  v-if="device.inUse">
-            <div class="circle"></div>
-        </h3> 
-        <h4 v-else>
-            <div class="grayCircle"></div>
-        </h4>
-        <h4> Device Name: {{device.name}} </h4>
-        <h4> Serial: {{device.serial}} </h4>
-        <h4 id="deviceType"> Device Type: {{device.machineModelId}} </h4>
-         
-        <h3 v-if="device.connectionLost"> MACHINE DOWN </h3>
-        <h3 v-else> Machine currently online & paired</h3>
-        <h3 v-if="device.inUse">Currently In Use</h3>
-        <h3 v-else>Not In Use</h3>
-        <h3> Battery: {{device.batteryLevel}}% </h3>
-        <h3 v-if="device.batteryLow">Battery is Low</h3>
-        <h3 v-else>Battery Good</h3>
-
-            <p> Left Distance Since Maintenance: {{device.leftDistanceSinceMaintenance}} </p>
-            <p> Right Distance Since Maintenance: {{device.rightDistanceSinceMaintenance}} </p>
-
-        <button class="maintenanceButton" v-on:click="sendSerial()"> Maintenance Reset </button>
-    </div>
-    -->
+    
 </template>
 
 
@@ -121,11 +97,11 @@ FROM LOGO
 <style>
 
 .card {
-  border: 4px solid #1C1C1C;
+  border: 5px solid #1C1C1C;
   border-radius: 25px;
   margin: 20px;
   text-align: center;
-  background-color: #2DACB7;
+  background-color: #81888B;
 }
 .connectionLost {
   background-color: #81888B;
@@ -152,15 +128,6 @@ FROM LOGO
 .maintenanceButton {
   width: 10rem;
 }
-#deviceType{
-  border-bottom: 2px solid #1C1C1C;
-}
-
-.list-group-item{
-  margin: 10px;
-  border: 10px solid #1C1C1C;
-  border-radius: 1rem;
-}
 
 img.card-img-top {
   width: 5rem;
@@ -181,11 +148,19 @@ div.progress-bar.progress-bar-striped{
   align-items: center;
   margin-left: 2.5rem;
 }
-.error-status-bad {
+.list-group-item{
+  margin: 11px;
+  border: 10px solid #1C1C1C;
+  border-radius: 1rem!important;
+}
+#connection-bad {
   background-color: #E97A7A;
 }
-.error-status-good {
-  background: #A1CC3A;
+#connection-good {
+  background-color: #A1CC3A;
+}
+.progress-bar.progress-bar-striped.batteryLow{
+  background-color: #E97A7A;
 }
 
 </style>
