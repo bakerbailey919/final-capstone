@@ -11,6 +11,7 @@
           <option value="Organization 4">Organization 4</option>
           <option value="Organization 5">Organization 5</option>
         </select>
+        <p class="space"></p>
         <select id="connectionFilter" v-model="filter.connectionStatus">
           <option value>Connection Status - Show All</option>
           <option v-bind:value="true">Connection Lost</option>
@@ -116,7 +117,7 @@ FROM LOGO
   text-align: center;
   font-size: 2rem;
   color: #444444;
-  border-bottom: 5px solid #2dacb7;
+  
 }
 select {
   background-color: F3F3F3;
@@ -142,12 +143,21 @@ select {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
+  border-bottom: 5px solid #2dacb7;
+}
+#orgFilter {
+  padding-right: 10px;
 }
 .dropdown-container {
   display: flex;
+  
 
 }
 .dropdown-container button {
   margin-left: 10px;
+ 
+}
+.space {
+  width: 10px;
 }
 </style>
