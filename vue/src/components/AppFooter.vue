@@ -27,20 +27,10 @@ footer {
   color:#444444 ;
   grid-area: navBar;
   text-align: center;
-<<<<<<< HEAD
-  -moz-box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.3);
   position: relative;
-=======
-    -webkit-box-shadow: 0 -4px 5px rgba(0,0,0,.3);
-    -moz-box-shadow: 0 -4px 5px rgba(0,0,0,.3);
-    box-shadow: 0 -4px 5px rgba(0,0,0,.3);
-
-    position : relative;
-    
-   
->>>>>>> de5409c118764f358fe18abd0c2ae906bd01e77c
 }
 img {
   padding-top: 5px;
