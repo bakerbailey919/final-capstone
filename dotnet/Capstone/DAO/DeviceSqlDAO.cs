@@ -214,7 +214,7 @@ namespace Capstone.DAO
                 }
 
                 TimeSpan diff = DateTime.Now - recentCheckIns[i].LastCheckInTimeUtc;
-                if (diff.TotalMinutes >= 28)
+                if (diff.TotalMinutes >= 15)
                 {
                     recentCheckIns[i].ConnectionLost = true;
                     machinesAlerting.Add(recentCheckIns[i]);
