@@ -19,9 +19,11 @@
         <button type="button" class="btn" @click="reloadPage()">Refresh</button>
       </div>
     </div>
-    <p v-for="device in filteredDevices" v-bind:key="device.id" id="card-container">
-      <device-card v-bind:device="device" />
-    </p>
+    <div class="card-container">
+      <p v-for="device in filteredDevices" v-bind:key="device.id" id="card-container">
+        <device-card v-bind:device="device" />
+      </p>
+    </div>
   </div>
 </template>
 
@@ -128,12 +130,13 @@ select {
   padding-left: 1.5rem;
 }
 .btn {
-  background-color: #41c0cb;
+  background-color: #2dacb7;
   color: #ffffff;
   padding-top: 0.5rem;
   padding-right: 1.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1.5rem;
+  border-radius: 1rem;
 }
 .btn-container {
   display: flex;
@@ -142,22 +145,29 @@ select {
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
   border-bottom: 5px solid #2dacb7;
 }
 #orgFilter {
   padding-right: 10px;
+  border-radius: 1rem;
+  color: #444444;
+}
+#connectionFilter {
+  border-radius: 1rem;
+  color: #444444;
 }
 .dropdown-container {
   display: flex;
-  
-
 }
 .dropdown-container button {
   margin-left: 10px;
- 
 }
 .space {
   width: 10px;
+}
+.card-container {
+  margin-left: 58px;
 }
 </style>
