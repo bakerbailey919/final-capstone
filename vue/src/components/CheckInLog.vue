@@ -244,6 +244,7 @@ table tr:nth-child(even) {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
+  padding-bottom: 8px;
   border-bottom: 5px solid #2dacb7;
 }
 .header {

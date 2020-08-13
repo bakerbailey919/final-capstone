@@ -168,6 +168,6 @@ select {
   width: 10px;
 }
 .card-container {
-  margin-left: 58px;
+  margin-left: 57px;
 }
 </style>
