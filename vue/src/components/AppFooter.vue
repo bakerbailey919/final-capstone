@@ -26,8 +26,12 @@ footer {
   background-color:  #f3f3f3;
   grid-area: navBar;
   text-align: center;
-border-top: 10px solid #2dacb7;
-box-shadow: 0 50vh 0 50vh #f3f3f3;
+-moz-box-shadow: 0 -4px 5px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 -4px 5px rgba(0,0,0,.3);
+    box-shadow: 0 -4px 5px rgba(0,0,0,.3);
+    position : relative;
+    
+
    
 }
 img {
