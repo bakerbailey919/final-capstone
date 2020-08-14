@@ -211,6 +211,8 @@ namespace Capstone.DAO
                     )
                 {
                     recentCheckIns[i].InUse = true;
+                    machinesAlerting.Add(recentCheckIns[i]);
+
                 }
 
                 TimeSpan diff = DateTime.Now - recentCheckIns[i].LastCheckInTimeUtc;
